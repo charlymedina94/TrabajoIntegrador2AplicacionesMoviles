@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnOpcionRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Usuarios"
+        android:onClick="onClick"/>
+
+
+    <!--
+
+    <Button
+        android:id="@+id/btnRegistroMascota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Mascota"
+        android:onClick="onClick"/>
+
+        -->
+
+
+
+    <Button
+        android:id="@+id/btnConsultaIndividual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Consultar Usuario"
+        android:onClick="onClick"/>
+
+    <!--
+
+   <Button
+       android:id="@+id/btnConsultaSpinner"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Consultar Lista Usuario Usando Spinner"
+       android:onClick="onClick"/>
+
+   <Button
+       android:id="@+id/btnConsultaLista"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Consultar Lista Usuario Usando ListView"
+       android:onClick="onClick"/>
+
+   <Button
+       android:id="@+id/btnConsultaListaMascota"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Consultar Lista Mascotas"
+       android:onClick="onClick"/>
+
+   <Button
+       android:id="@+id/btnConsultaListaPersonasRecycler"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Consultar Lista Usando Recycler"
+       android:onClick="onClick"/>
+
+
+       -->
+
+
+</LinearLayout>

@@ -9,25 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TrabajoIntegrador2AplicacionesMoviles">
-        <activity
-            android:name=".ItemListActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.TrabajoIntegrador2AplicacionesMoviles.NoActionBar">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ItemDetailActivity"
-            android:label="@string/title_item_detail"
-            android:parentActivityName=".ItemListActivity"
-            android:theme="@style/Theme.TrabajoIntegrador2AplicacionesMoviles.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.trabajointegrador2aplicacionesmoviles.ItemListActivity" />
-        </activity>
+        <activity android:name=".RegistroUsuariosActivity" />
+
+        <activity android:name=".ConsultarUsuariosActivity" />
+
+        <!--
+
+        <activity android:name=".ConsultaComboActivity" />
+        <activity android:name=".ConsultarListaListViewActivity" />
+        <activity android:name=".DetalleUsuarioActivity" />
+        <activity android:name=".RegistroMascotaActivity" />
+        <activity android:name=".ListaMascotasActivity" />
+        <activity android:name=".DetalleMascotaActivity" />
+        <activity android:name=".ListaPersonasRecycler"></activity>
+        -->
     </application>
+
+
 
 </manifest>
