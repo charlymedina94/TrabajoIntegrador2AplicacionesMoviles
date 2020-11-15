@@ -20,7 +20,8 @@
         android:id="@+id/campoId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="DNI"/>
+        android:hint="DNI"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/campoPassword"
@@ -38,7 +39,9 @@
         android:id="@+id/campoCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo Electronico"/>
+        android:hint="Correo Electronico"
+        android:inputType="textEmailAddress"
+        android:singleLine="false" />
 
     <Button
         android:id="@+id/btnRegistro"

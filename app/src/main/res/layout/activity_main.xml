@@ -23,7 +23,8 @@
         android:id="@+id/campoId2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="DNI" />
+        android:hint="DNI"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/campoPassword2"
@@ -31,6 +32,13 @@
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:password="true" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Ingresar" />
 
     <Button
         android:id="@+id/btnOpcionRegistro"
