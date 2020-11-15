@@ -1,6 +1,9 @@
 package com.example.trabajointegrador2aplicacionesmoviles;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -27,3 +30,15 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
     }
 
 }
+
+
+//    public Cursor ConsultarUsuPas(String usu, String pas) throws SQLException{
+//        Cursor mcursor=null;
+//
+//        mcursor=this.getReadableDatabase().query(Utilidades.TABLA_USUARIO,
+//                new String[]{Utilidades.CAMPO_ID,Utilidades.CAMPO_PASSWORD,Utilidades.CAMPO_NOMBRE,Utilidades.CAMPO_CORREO};
+//
+//
+//        return mcursor;
+//    }
+//}

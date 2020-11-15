@@ -39,10 +39,11 @@
         android:hint="Nombre"/>
 
     <EditText
-        android:id="@+id/campoTelefonoConsulta"
+        android:id="@+id/campoCorreoConsulta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Telefono"/>
+        android:hint="Correo Electronico"/>
+
 
     <LinearLayout
         android:layout_marginTop="30dp"

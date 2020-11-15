@@ -6,14 +6,39 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
+    android:textAlignment="center"
     tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:text="INICIO DE SESION"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/campoId2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="DNI" />
+
+    <EditText
+        android:id="@+id/campoPassword2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:password="true" />
 
     <Button
         android:id="@+id/btnOpcionRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrar Usuarios"
-        android:onClick="onClick"/>
+        android:layout_marginTop="150dp"
+        android:onClick="onClick"
+        android:text="Registrar Usuarios" />
 
 
     <!--
@@ -28,13 +53,12 @@
         -->
 
 
-
     <Button
         android:id="@+id/btnConsultaIndividual"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Consultar Usuario"
-        android:onClick="onClick"/>
+        android:onClick="onClick"
+        android:text="Consultar Usuario" />
 
     <!--
 

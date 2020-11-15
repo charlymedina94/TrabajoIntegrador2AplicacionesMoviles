@@ -20,7 +20,13 @@
         android:id="@+id/campoId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="dni"/>
+        android:hint="DNI"/>
+
+    <EditText
+        android:id="@+id/campoPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"/>
 
     <EditText
         android:id="@+id/campoNombre"
@@ -29,10 +35,10 @@
         android:hint="nombre"/>
 
     <EditText
-        android:id="@+id/campoTelefono"
+        android:id="@+id/campoCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="telefono"/>
+        android:hint="Correo Electronico"/>
 
     <Button
         android:id="@+id/btnRegistro"

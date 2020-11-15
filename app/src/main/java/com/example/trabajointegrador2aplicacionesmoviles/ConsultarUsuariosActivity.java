@@ -14,7 +14,7 @@ import com.example.trabajointegrador2aplicacionesmoviles.utilidades.Utilidades;
 
 public class ConsultarUsuariosActivity extends AppCompatActivity {
 
-    EditText campoId,campoNombre,campoTelefono;
+    EditText campoId,campoNombre,campoCorreo;
 
     ConexionSQLiteHelper conn;
 
@@ -27,7 +27,7 @@ public class ConsultarUsuariosActivity extends AppCompatActivity {
 
         campoId= (EditText) findViewById(R.id.documentoId);
         campoNombre= (EditText) findViewById(R.id.campoNombreConsulta);
-        campoTelefono= (EditText) findViewById(R.id.campoTelefonoConsulta);
+        campoCorreo= (EditText) findViewById(R.id.campoCorreoConsulta);
 
 
     }
@@ -63,7 +63,7 @@ public class ConsultarUsuariosActivity extends AppCompatActivity {
         String[] parametros={campoId.getText().toString()};
         ContentValues values=new ContentValues();
         values.put(Utilidades.CAMPO_NOMBRE,campoNombre.getText().toString());
-        values.put(Utilidades.CAMPO_TELEFONO,campoTelefono.getText().toString());
+        values.put(Utilidades.CAMPO_CORREO,campoCorreo.getText().toString());
 
         db.update(Utilidades.TABLA_USUARIO,values,Utilidades.CAMPO_ID+"=?",parametros);
         Toast.makeText(getApplicationContext(),"Ya se actualizó el usuario",Toast.LENGTH_LONG).show();
@@ -77,12 +77,12 @@ public class ConsultarUsuariosActivity extends AppCompatActivity {
 
         try {
             //select nombre,telefono from usuario where codigo=?
-            Cursor cursor=db.rawQuery("SELECT "+Utilidades.CAMPO_NOMBRE+","+Utilidades.CAMPO_TELEFONO+
+            Cursor cursor=db.rawQuery("SELECT "+Utilidades.CAMPO_NOMBRE+","+Utilidades.CAMPO_CORREO+
                     " FROM "+Utilidades.TABLA_USUARIO+" WHERE "+Utilidades.CAMPO_ID+"=? ",parametros);
 
             cursor.moveToFirst();
             campoNombre.setText(cursor.getString(0));
-            campoTelefono.setText(cursor.getString(1));
+            campoCorreo.setText(cursor.getString(1));
 
         }catch (Exception e){
             Toast.makeText(getApplicationContext(),"El documento no existe",Toast.LENGTH_LONG).show();
@@ -94,13 +94,13 @@ public class ConsultarUsuariosActivity extends AppCompatActivity {
     private void consultar() {
         SQLiteDatabase db=conn.getReadableDatabase();
         String[] parametros={campoId.getText().toString()};
-        String[] campos={Utilidades.CAMPO_NOMBRE,Utilidades.CAMPO_TELEFONO};
+        String[] campos={Utilidades.CAMPO_NOMBRE,Utilidades.CAMPO_CORREO};
 
         try {
             Cursor cursor =db.query(Utilidades.TABLA_USUARIO,campos,Utilidades.CAMPO_ID+"=?",parametros,null,null,null);
             cursor.moveToFirst();
             campoNombre.setText(cursor.getString(0));
-            campoTelefono.setText(cursor.getString(1));
+            campoCorreo.setText(cursor.getString(1));
             cursor.close();
         }catch (Exception e){
             Toast.makeText(getApplicationContext(),"El documento no existe",Toast.LENGTH_LONG).show();
@@ -112,7 +112,7 @@ public class ConsultarUsuariosActivity extends AppCompatActivity {
 
     private void limpiar() {
         campoNombre.setText("");
-        campoTelefono.setText("");
+        campoCorreo.setText("");
     }
 
 }
