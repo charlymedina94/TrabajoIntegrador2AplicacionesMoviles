@@ -24,12 +24,6 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/campoPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Contraseña"/>
-
-    <EditText
         android:id="@+id/campoNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,6 +36,20 @@
         android:hint="Correo Electronico"
         android:inputType="textEmailAddress"
         android:singleLine="false" />
+
+    <EditText
+        android:id="@+id/campoPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:password="true" />
+
+    <EditText
+        android:id="@+id/campoConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Repetir contraseña"
+        android:password="true" />
 
     <Button
         android:id="@+id/btnRegistro"

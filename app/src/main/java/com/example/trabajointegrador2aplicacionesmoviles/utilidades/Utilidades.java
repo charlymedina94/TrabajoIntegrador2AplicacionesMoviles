@@ -13,7 +13,7 @@ public class Utilidades {
     public static final String CAMPO_ROLES="roles";
     public static final String CAMPO_ISACTIVE="isActive";
 
-    public static final String CREAR_TABLA_USUARIO=" CREATE TABLE " + ""+ TABLA_USUARIO +" ("+ CAMPO_ID +" " + " INTEGER, "+ CAMPO_PASSWORD +" TEXT, "+ CAMPO_NOMBRE +" TEXT,"+ CAMPO_CORREO +" TEXT, "+CAMPO_ROLES +" TEXT, "+ CAMPO_ISACTIVE +" TEXT )";
+    public static final String CREAR_TABLA_USUARIO=" CREATE TABLE " + ""+ TABLA_USUARIO +" ("+ CAMPO_ID +" " + " INTEGER PRIMARY KEY UNIQUE, "+ CAMPO_PASSWORD +" TEXT, "+ CAMPO_NOMBRE +" TEXT,"+ CAMPO_CORREO +" TEXT UNIQUE, "+CAMPO_ROLES +" TEXT, "+ CAMPO_ISACTIVE +" TEXT )";
 
     //Constantes campos tabla mascota
     public static final String TABLA_MASCOTA="mascota";

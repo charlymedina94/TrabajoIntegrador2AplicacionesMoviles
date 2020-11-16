@@ -29,6 +29,17 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+    //Chequeo de login
+
+    public Boolean dniPassword (String dni, String password){
+        SQLiteDatabase db =this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from usuario where id=? and password=?", new String[]{dni,password});
+        if(cursor.getCount()>0) return true;
+        else return false;
+    }
+
+
 }
 
 
@@ -42,3 +53,5 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 //        return mcursor;
 //    }
 //}
+
+
