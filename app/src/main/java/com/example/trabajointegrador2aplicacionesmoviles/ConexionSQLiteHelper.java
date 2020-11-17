@@ -6,6 +6,7 @@ import android.database.CursorIndexOutOfBoundsException;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import com.example.trabajointegrador2aplicacionesmoviles.utilidades.Utilidades;
 
@@ -37,6 +38,58 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("select * from usuario where id=? and password=?", new String[]{dni,password});
         if(cursor.getCount()>0) return true;
         else return false;
+    }
+
+
+
+    //########### AGREGO MOMENTOS
+
+    public void queryData(String sql){
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql);
+    }
+
+    public void insertData(String descripcion, byte[] image){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "INSERT INTO MOMENTO VALUES (NULL, ?, ?)";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1, descripcion);
+        statement.bindBlob(2, image);
+
+        statement.executeInsert();
+    }
+
+    public void updateData(String descripcion,  int id) {
+        SQLiteDatabase database = getWritableDatabase();
+
+        String sql = "UPDATE MOMENTO SET descripcion = ? WHERE id = ?";
+        SQLiteStatement statement = database.compileStatement(sql);
+
+        statement.bindString(1, descripcion);
+        statement.bindDouble(2, (double)id);
+
+        statement.execute();
+        database.close();
+    }
+
+    public  void deleteData(int id) {
+        SQLiteDatabase database = getWritableDatabase();
+
+        String sql = "DELETE FROM MOMENTO WHERE id = ?";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindDouble(1, (double)id);
+
+        statement.execute();
+        database.close();
+    }
+
+    public Cursor getData(String sql){
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(sql, null);
     }
 
 

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.trabajointegrador2aplicacionesmoviles">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +21,10 @@
         <activity android:name=".RegistroUsuariosActivity" />
 
         <activity android:name=".ConsultarUsuariosActivity" />
+
+        <activity android:name=".SubirMomentoActivity" />
+
+        <activity android:name=".MomentoList" />
 
         <!--
 

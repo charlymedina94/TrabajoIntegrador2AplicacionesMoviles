@@ -73,6 +73,13 @@ public class MainActivity extends AppCompatActivity {
                 miIntent=new Intent(MainActivity.this,ConsultarUsuariosActivity.class);
                 break;
 
+
+
+            case R.id.btnSubirMomento:
+                miIntent=new Intent(MainActivity.this,SubirMomentoActivity.class);
+                break;
+
+
                 /*
 
                 case R.id.btnConsultaSpinner:

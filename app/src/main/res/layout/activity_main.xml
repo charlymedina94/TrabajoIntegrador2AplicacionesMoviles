@@ -68,6 +68,15 @@
         android:onClick="onClick"
         android:text="Consultar Usuario" />
 
+
+    <Button
+        android:id="@+id/btnSubirMomento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Subir momento"
+        android:onClick="onClick"/>
+
+
     <!--
 
    <Button
