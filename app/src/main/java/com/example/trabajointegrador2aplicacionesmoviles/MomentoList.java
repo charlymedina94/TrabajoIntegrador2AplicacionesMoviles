@@ -1,6 +1,5 @@
 package com.example.trabajointegrador2aplicacionesmoviles;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -18,13 +17,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.example.trabajointegrador2aplicacionesmoviles.entidades.Momento;
 
@@ -43,11 +40,11 @@ public class MomentoList extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.food_list_activity);
+        setContentView(R.layout.momento_list_activity);
 
         gridView = (GridView) findViewById(R.id.gridView);
         list = new ArrayList<>();
-        adapter = new MomentoListAdapter(this, R.layout.food_items, list);
+        adapter = new MomentoListAdapter(this, R.layout.momento_items, list);
         gridView.setAdapter(adapter);
 
         // get all data from sqlite
@@ -104,7 +101,7 @@ public class MomentoList extends AppCompatActivity {
     private void showDialogUpdate(Activity activity, final int position){
 
         final Dialog dialog = new Dialog(activity);
-        dialog.setContentView(R.layout.update_food_activity);
+        dialog.setContentView(R.layout.update_momento_activity);
         dialog.setTitle("Update");
 
         //imageViewFood = (ImageView) dialog.findViewById(R.id.imageViewFood);
