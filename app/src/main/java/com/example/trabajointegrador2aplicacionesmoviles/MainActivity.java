@@ -3,7 +3,9 @@ package com.example.trabajointegrador2aplicacionesmoviles;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         e2=(EditText)findViewById(R.id.campoPassword2);
         b1=(Button) findViewById(R.id.btnLogin);
 
+        cargarPreferencias();
+
         ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
 
 
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 Boolean chkdnipassword= conn.dniPassword(dni,pass);
                 if (chkdnipassword==true){
                     Toast.makeText(getApplicationContext(),"Logueo exitoso",Toast.LENGTH_SHORT).show();
+                    guardarPreferencias();
                 }else {
                     Toast.makeText(getApplicationContext(),"DNI y/o Contraseña incorrectos",Toast.LENGTH_SHORT).show();
                 }
@@ -46,7 +51,27 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void cargarPreferencias() {
+        SharedPreferences preferences= getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        String user = preferences.getString("user","");
+        String pass = preferences.getString("pass","");
 
+        e1.setText(user);
+        e2.setText(pass);
+
+
+    }
+
+    private void guardarPreferencias() {
+        SharedPreferences preferences= getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        String usuario =e1.getText().toString();
+        String pass=e2.getText().toString();
+
+        SharedPreferences.Editor editor=preferences.edit();
+        editor.putString("user",usuario);
+        editor.putString("pass",pass);
+        editor.commit();
+    }
 
 
     public void onClick(View v) {
@@ -59,13 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 miIntent=new Intent(MainActivity.this,RegistroUsuariosActivity.class);
                 break;
 
-                /*
 
-            case R.id.btnRegistroMascota:
-                miIntent=new Intent(MainActivity.this,RegistroMascotaActivity.class);
-                break;
-
-                */
 
 
 
