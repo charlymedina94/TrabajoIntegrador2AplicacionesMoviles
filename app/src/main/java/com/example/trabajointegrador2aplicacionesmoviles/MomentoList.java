@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 
 public class MomentoList extends AppCompatActivity {
 
-    GridView gridView;
+    ListView gridView;
     ArrayList<Momento> list;
     MomentoListAdapter adapter = null;
 
@@ -42,7 +43,7 @@ public class MomentoList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.momento_list_activity);
 
-        gridView = (GridView) findViewById(R.id.gridView);
+        gridView = (ListView) findViewById(R.id.gridView);
         list = new ArrayList<>();
         adapter = new MomentoListAdapter(this, R.layout.momento_items, list);
         gridView.setAdapter(adapter);

@@ -20,7 +20,10 @@ import com.example.trabajointegrador2aplicacionesmoviles.tag.BuscarTagActivity;
 public class MainActivity extends AppCompatActivity {
     EditText e1, e2, e3;
     Button b1, b2;
+
 //    ConexionSQLiteHelper db;
+
+    public static ConexionSQLiteHelper sqLiteHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         e1=(EditText)findViewById(R.id.campoId2);
         e2=(EditText)findViewById(R.id.campoPassword2);
         b1=(Button) findViewById(R.id.btnLogin);
+
+
 
         cargarPreferencias();
 
@@ -44,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
                 if (chkdnipassword==true){
                     Toast.makeText(getApplicationContext(),"Logueo exitoso",Toast.LENGTH_SHORT).show();
                     guardarPreferencias();
+
+
+
+                            Intent intent = new Intent(MainActivity.this, SubirMomentoActivity.class);
+                            startActivity(intent);
+
+
+
                 }else {
                     Toast.makeText(getApplicationContext(),"DNI y/o Contraseña incorrectos",Toast.LENGTH_SHORT).show();
                 }

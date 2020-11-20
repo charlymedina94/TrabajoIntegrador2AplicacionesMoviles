@@ -30,7 +30,7 @@
 
         <activity android:name=".tag.TagList"/>
 
-
+        <activity android:name=".MostrarFeedActivity"/>
 
         <!--
 
