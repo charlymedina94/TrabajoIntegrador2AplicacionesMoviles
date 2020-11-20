@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">TrabajoIntegrador2AplicacionesMoviles</string>
-    <string name="title_item_detail">Item Detail</string>
+    <string name="app_name" translatable="false">Universidapp</string>
+    <string name="inicio_sesion">Inicio de sesión</string>
+    <string name="title_item_detail">Detalle de item</string>
     <string name="agregar">Agregar</string>
     <string name="elegir_imagen">Elegir imagen</string>
     <string name="descripcion">Descripcion</string>

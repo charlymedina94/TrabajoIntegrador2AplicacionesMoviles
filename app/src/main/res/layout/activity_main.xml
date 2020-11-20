@@ -14,8 +14,8 @@
 
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:text="INICIO DE SESION"
         android:gravity="center"
+        android:text="@string/inicio_sesion"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -78,6 +78,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Subir momento"
+                android:layout_margin="10dp"
+                android:onClick="onClick"/>
+
+
+            <Button
+                android:id="@+id/btnBuscarTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Buscar tag"
                 android:layout_margin="10dp"
                 android:onClick="onClick"/>
 

@@ -2,5 +2,9 @@
 <resources>
 
     <string name="inicio_sesion">Login</string>
-
+    <string name="title_item_detail">Item Detail</string>
+    <string name="agregar">Add</string>
+    <string name="elegir_imagen">Choose image</string>
+    <string name="descripcion">Description</string>
+    <string name="lista_de_momentos">Moments List</string>
 </resources>

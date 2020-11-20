@@ -2,5 +2,10 @@
 <resources>
 
     <string name="inicio_sesion">Conecte-se</string>
+    <string name="title_item_detail">Detalhe do item</string>
+    <string name="agregar">Adicionar</string>
+    <string name="elegir_imagen">Escolha a imagem</string>
+    <string name="descripcion">Descricao</string>
+    <string name="lista_de_momentos">Lista de momentos</string>
 
 </resources>

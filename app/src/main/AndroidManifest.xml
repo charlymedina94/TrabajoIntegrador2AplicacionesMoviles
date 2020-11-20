@@ -26,6 +26,12 @@
 
         <activity android:name=".MomentoList" />
 
+        <activity android:name=".tag.BuscarTagActivity" />
+
+        <activity android:name=".tag.TagList"/>
+
+
+
         <!--
 
         <activity android:name=".ConsultaComboActivity" />

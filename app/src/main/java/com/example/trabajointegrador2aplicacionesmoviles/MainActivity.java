@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.trabajointegrador2aplicacionesmoviles.ConexionSQLiteHelper;
+import com.example.trabajointegrador2aplicacionesmoviles.tag.BuscarTagActivity;
 
 public class MainActivity extends AppCompatActivity {
     EditText e1, e2, e3;
@@ -96,6 +97,10 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.btnSubirMomento:
                 miIntent=new Intent(MainActivity.this,SubirMomentoActivity.class);
+                break;
+
+            case R.id.btnBuscarTag:
+                miIntent=new Intent(MainActivity.this, BuscarTagActivity.class);
                 break;
 
 
