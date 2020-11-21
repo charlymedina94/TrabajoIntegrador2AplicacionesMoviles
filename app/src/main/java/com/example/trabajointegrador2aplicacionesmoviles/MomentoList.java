@@ -64,7 +64,7 @@ public class MomentoList extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
-                CharSequence[] items = {"Modificar", "Eliminar"};
+                CharSequence[] items = {"Modificar", "Eliminar", "Guardar en SD"};
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MomentoList.this);
 
                 dialog.setTitle("Elige una opción");
@@ -81,7 +81,7 @@ public class MomentoList extends AppCompatActivity {
                             // show dialog update at here
                             showDialogUpdate(MomentoList.this, arrID.get(position));
 
-                        } else {
+                        }else if (item == 1) {
                             // delete
                             Cursor c = SubirMomentoActivity.sqLiteHelper.getData("SELECT id FROM MOMENTO");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
@@ -90,6 +90,13 @@ public class MomentoList extends AppCompatActivity {
                             }
                             showDialogDelete(arrID.get(position));
                         }
+
+                        else if(item == 2) {
+
+                            Toast.makeText(getApplicationContext(), "Se muestra mensaje, pero no esta hecha la funcionalidad para guardar",Toast.LENGTH_SHORT).show();
+
+                        }
+
                     }
                 });
                 dialog.show();
