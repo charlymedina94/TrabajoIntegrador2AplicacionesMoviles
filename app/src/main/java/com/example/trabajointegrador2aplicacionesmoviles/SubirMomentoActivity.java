@@ -1,13 +1,19 @@
 package com.example.trabajointegrador2aplicacionesmoviles;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,10 +21,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
@@ -27,15 +36,21 @@ public class SubirMomentoActivity extends AppCompatActivity {
     EditText edtDescripcion;
     Button btnChoose, btnAdd, btnList;
     ImageView imageView;
+    private final String CARPETA_RAIZ="misImagenes/";
+    private final String RUTA_IMAGEN=CARPETA_RAIZ+"misFotos";
+    String path;
 
     final int REQUEST_CODE_GALLERY = 999;
+    final int REQUEST_CODE_FOTO =555;
 
     public static ConexionSQLiteHelper sqLiteHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subir_momento);
+
 
         init();
 
@@ -93,37 +108,105 @@ public class SubirMomentoActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-        if(requestCode == REQUEST_CODE_GALLERY){
-            if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, REQUEST_CODE_GALLERY);
+        final CharSequence[] opciones= {"Tomar Foto", "Cargar Imagen","Cancelar"};
+        final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(SubirMomentoActivity.this);
+        alertOpciones.setTitle("Seleccione una opción");
+        alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (opciones[i].equals("Tomar Foto")){
+                    tomarFoto();
+
+                }else {
+                    if (opciones[i].equals("Cargar Imagen")){
+                        if(requestCode == REQUEST_CODE_GALLERY){
+                            if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                                Intent intent = new Intent(Intent.ACTION_PICK);
+                                intent.setType("image/*");
+                                startActivityForResult(intent, REQUEST_CODE_GALLERY);
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(), "No tenes permisos para acceder a la dirección de este archivo!", Toast.LENGTH_SHORT).show();
+                            }
+                            return;
+                        }
+                    }else {
+                        dialogInterface.dismiss();
+                    }
+                }
             }
-            else {
-                Toast.makeText(getApplicationContext(), "No tenes permisos para acceder a la dirección de este archivo!", Toast.LENGTH_SHORT).show();
-            }
-            return;
-        }
+        });
+        alertOpciones.show();
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    private void tomarFoto() {
+        File fileImagen = new File(Environment.getExternalStorageDirectory(),RUTA_IMAGEN);
+        boolean isCreada=fileImagen.exists();
+        String nombreImagen="";
+        if (isCreada==false){
+            isCreada=fileImagen.mkdirs();
+        }
+        if(isCreada==true){
+            nombreImagen=(System.currentTimeMillis()/1000)+".jpg";
+        }
+        path=Environment.getExternalStorageDirectory()+File.separator+RUTA_IMAGEN+File.separator+nombreImagen;
+
+        File imagen=new File(path);
+
+        Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".provider", imagen));
+        startActivityForResult(intent, REQUEST_CODE_FOTO);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
+        if (resultCode==RESULT_OK) {
 
-        if(requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null){
-            Uri uri = data.getData();
+            switch (requestCode) {
+                case REQUEST_CODE_GALLERY:
+                    Uri uri = data.getData();
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(uri);
 
-            try {
-                InputStream inputStream = getContentResolver().openInputStream(uri);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        imageView.setImageBitmap(bitmap);
 
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                imageView.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case REQUEST_CODE_FOTO:
+                    MediaScannerConnection.scanFile(this, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                        @Override
+                        public void onScanCompleted(String path, Uri uri) {
+                            Log.i("Ruta de almacenamiento","Path:"+path);
+                        }
+                    });
+                    Bitmap bitmap = BitmapFactory.decodeFile(path);
+                    imageView.setImageBitmap(bitmap);
+                    break;
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+
         }
+
+        }
+
+//        if(requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null){
+//            Uri uri = data.getData();
+//
+//            try {
+//                InputStream inputStream = getContentResolver().openInputStream(uri);
+//
+//                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+//                imageView.setImageBitmap(bitmap);
+//
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }
+//        }
 
         super.onActivityResult(requestCode, resultCode, data);
     }
