@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
 
+        sqLiteHelper = new ConexionSQLiteHelper(this, "MomentoDB.sqlite", null, 1);
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB)");
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                            Intent intent = new Intent(MainActivity.this, SubirMomentoActivity.class);
+                            Intent intent = new Intent(MainActivity.this, MomentoList.class);
                             startActivity(intent);
 
 
