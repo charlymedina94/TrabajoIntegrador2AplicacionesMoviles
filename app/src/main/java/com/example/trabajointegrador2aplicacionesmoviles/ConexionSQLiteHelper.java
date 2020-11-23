@@ -8,9 +8,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
+import com.example.trabajointegrador2aplicacionesmoviles.entidades.Momento;
 import com.example.trabajointegrador2aplicacionesmoviles.utilidades.Utilidades;
 
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
+
 
     public ConexionSQLiteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -20,13 +22,13 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Utilidades.CREAR_TABLA_USUARIO);
-        //db.execSQL(Utilidades.CREAR_TABLA_MASCOTA);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAntigua, int versionNueva) {
         db.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_USUARIO);
-        //db.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_MASCOTA);
+
         onCreate(db);
     }
 
@@ -49,18 +51,32 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         database.execSQL(sql);
     }
 
-    public void insertData(String descripcion, byte[] image){
+//    @Override
+//    public void onUpgrade( SQLiteDatabase database, int versionAntigua, int versionNueva) {
+//        database.execSQL("DROP TABLE IF EXISTS MOMENTO");
+//        onCreate(database);
+//
+//    }
+
+
+
+    public void insertData(String descripcion, byte[] image, String fecha, String ubicacion){
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO MOMENTO VALUES (NULL, ?, ?)";
+        String sql = "INSERT INTO MOMENTO VALUES (NULL, ?, ?,?,?)";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
 
         statement.bindString(1, descripcion);
         statement.bindBlob(2, image);
+        statement.bindString(3, fecha);
+        statement.bindString(4, ubicacion);
 
         statement.executeInsert();
     }
+
+
+
 
     public void updateData(String descripcion,  int id) {
         SQLiteDatabase database = getWritableDatabase();

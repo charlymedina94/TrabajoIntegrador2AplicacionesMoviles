@@ -29,6 +29,7 @@ import com.example.trabajointegrador2aplicacionesmoviles.entidades.Momento;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class MomentoList extends AppCompatActivity {
@@ -55,8 +56,11 @@ public class MomentoList extends AppCompatActivity {
             int id = cursor.getInt(0);
             String descripcion = cursor.getString(1);
             byte[] image = cursor.getBlob(2);
+            String fecha=cursor.getString(3);
+            String ubicacion=cursor.getString(4);
 
-            list.add(new Momento(descripcion, image, id));
+
+            list.add(new Momento(descripcion, image, id,fecha,ubicacion));
         }
         adapter.notifyDataSetChanged();
 
@@ -192,8 +196,10 @@ public class MomentoList extends AppCompatActivity {
             int id = cursor.getInt(0);
             String descripcion = cursor.getString(1);
             byte[] image = cursor.getBlob(2);
+            String fecha=cursor.getString(3);
+            String ubicacion=cursor.getString(4);
 
-            list.add(new Momento(descripcion, image, id));
+            list.add(new Momento(descripcion, image, id,fecha,ubicacion));
         }
         adapter.notifyDataSetChanged();
     }

@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
@@ -41,7 +42,7 @@ public class SubirMomentoActivity extends AppCompatActivity {
     String path;
 
     final int REQUEST_CODE_GALLERY = 999;
-    final int REQUEST_CODE_FOTO =555;
+    final int REQUEST_CODE_FOTO =998;
 
     public static ConexionSQLiteHelper sqLiteHelper;
 
@@ -56,7 +57,9 @@ public class SubirMomentoActivity extends AppCompatActivity {
 
         sqLiteHelper = new ConexionSQLiteHelper(this, "MomentoDB.sqlite", null, 1);
 
-        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB)");
+        sqLiteHelper.queryData("DROP TABLE IF EXISTS MOMENTO");
+
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR)");
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,9 +76,11 @@ public class SubirMomentoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
+                    String fecha="asd";
+                    String ubicacion="eee";
                     sqLiteHelper.insertData(
                             edtDescripcion.getText().toString().trim(),
-                            imageViewToByte(imageView)
+                            imageViewToByte(imageView),fecha,ubicacion
                     );
                     Toast.makeText(getApplicationContext(), "Agregado correctamente!", Toast.LENGTH_SHORT).show();
                     edtDescripcion.setText("");
@@ -99,6 +104,7 @@ public class SubirMomentoActivity extends AppCompatActivity {
 
     public static byte[] imageViewToByte(ImageView image) {
         Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray = stream.toByteArray();
@@ -149,14 +155,24 @@ public class SubirMomentoActivity extends AppCompatActivity {
             isCreada=fileImagen.mkdirs();
         }
         if(isCreada==true){
-            nombreImagen=(System.currentTimeMillis()/1000)+".jpg";
+            nombreImagen=(System.currentTimeMillis()/1000)+".png";
         }
         path=Environment.getExternalStorageDirectory()+File.separator+RUTA_IMAGEN+File.separator+nombreImagen;
 
         File imagen=new File(path);
+        Intent intent=null;
+        intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".provider", imagen));
+        //
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
+            String authorities=getApplicationContext().getPackageName()+".provider";
+            Uri imageUri=FileProvider.getUriForFile(this,authorities,imagen);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
+
+        }else{
+            intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(imagen));
+        }
+
         startActivityForResult(intent, REQUEST_CODE_FOTO);
     }
 
@@ -188,9 +204,8 @@ public class SubirMomentoActivity extends AppCompatActivity {
                     Bitmap bitmap = BitmapFactory.decodeFile(path);
                     imageView.setImageBitmap(bitmap);
                     break;
+            }
 
-
-        }
 
         }
 

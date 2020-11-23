@@ -87,8 +87,10 @@ public class TagList extends AppCompatActivity {
             int id = cursor.getInt(0);
             String descripcion = cursor.getString(1);
             byte[] image = cursor.getBlob(2);
+            String fecha=cursor.getString(3);
+            String ubicacion=cursor.getString(4);
 
-            list.add(new Momento(descripcion, image, id));
+            list.add(new Momento(descripcion, image, id,fecha,ubicacion));
         }
         adapter.notifyDataSetChanged();
 
@@ -217,8 +219,10 @@ public class TagList extends AppCompatActivity {
             int id = cursor.getInt(0);
             String descripcion = cursor.getString(1);
             byte[] image = cursor.getBlob(2);
+            String fecha=cursor.getString(3);
+            String ubicacion=cursor.getString(4);
 
-            list.add(new Momento(descripcion, image, id));
+            list.add(new Momento(descripcion, image, id,fecha,ubicacion));
         }
         adapter.notifyDataSetChanged();
     }

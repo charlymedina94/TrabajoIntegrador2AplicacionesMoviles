@@ -41,7 +41,7 @@ public class MostrarFeedActivity extends AppCompatActivity {
 
         sqLiteHelper = new ConexionSQLiteHelper(this, "MomentoDB.sqlite", null, 1);
 
-        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB)");
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR)");
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,9 +58,11 @@ public class MostrarFeedActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
+                    String fecha="";
+                    String ubicacion = "";
                     sqLiteHelper.insertData(
                             edtDescripcion.getText().toString().trim(),
-                            imageViewToByte(imageView)
+                            imageViewToByte(imageView),fecha,ubicacion
                     );
                     Toast.makeText(getApplicationContext(), "Agregado correctamente!", Toast.LENGTH_SHORT).show();
                     edtDescripcion.setText("");
