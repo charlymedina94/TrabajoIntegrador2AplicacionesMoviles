@@ -31,6 +31,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class SubirMomentoActivity extends AppCompatActivity {
 
@@ -58,7 +62,6 @@ public class SubirMomentoActivity extends AppCompatActivity {
         sqLiteHelper = new ConexionSQLiteHelper(this, "MomentoDB.sqlite", null, 1);
 
         sqLiteHelper.queryData("DROP TABLE IF EXISTS MOMENTO");
-
         sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR)");
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +79,9 @@ public class SubirMomentoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    String fecha="asd";
+                    Date date = Calendar.getInstance().getTime();
+                    DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy hh:mm a");
+                    String fecha = dateFormat.format(date);
                     String ubicacion="eee";
                     sqLiteHelper.insertData(
                             edtDescripcion.getText().toString().trim(),
