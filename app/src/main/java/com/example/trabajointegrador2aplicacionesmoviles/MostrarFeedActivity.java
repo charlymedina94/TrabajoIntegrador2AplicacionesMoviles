@@ -75,6 +75,7 @@ public class MostrarFeedActivity extends AppCompatActivity {
             }
         });
 
+        /*
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +83,8 @@ public class MostrarFeedActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+         */
     }
 
     public static byte[] imageViewToByte(ImageView image) {
@@ -134,7 +137,7 @@ public class MostrarFeedActivity extends AppCompatActivity {
         edtDescripcion = (EditText) findViewById(R.id.edtDescripcion);
         btnChoose = (Button) findViewById(R.id.btnChoose);
         btnAdd = (Button) findViewById(R.id.btnAdd);
-        btnList = (Button) findViewById(R.id.btnList);
+        //btnList = (Button) findViewById(R.id.btnList);
         imageView = (ImageView) findViewById(R.id.imageView);
     }
 
