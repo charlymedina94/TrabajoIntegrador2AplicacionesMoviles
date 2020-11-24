@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+/*
 
             case R.id.btnConsultaIndividual:
                 miIntent=new Intent(MainActivity.this,ConsultarUsuariosActivity.class);
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 miIntent=new Intent(MainActivity.this, BuscarTagActivity.class);
                 break;
 
-
+*/
                 /*
 
                 case R.id.btnConsultaSpinner:

@@ -120,7 +120,7 @@ public class BuscarTagActivity extends AppCompatActivity {
         edtDescripcion = (EditText) findViewById(R.id.edtDescripcion);
         btnChoose = (Button) findViewById(R.id.btnChoose);
         btnAdd = (Button) findViewById(R.id.btnAdd);
-        btnList = (Button) findViewById(R.id.btnList);
+        //btnList = (Button) findViewById(R.id.btnList);
         imageView = (ImageView) findViewById(R.id.imageView);
     }
 

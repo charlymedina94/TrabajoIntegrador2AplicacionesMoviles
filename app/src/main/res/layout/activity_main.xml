@@ -64,6 +64,9 @@
                 android:onClick="onClick"
                 android:text="Registrar Usuarios" />
 
+
+            <!--
+
             <Button
                 android:id="@+id/btnConsultaIndividual"
                 android:layout_width="match_parent"
@@ -90,7 +93,7 @@
                 android:layout_margin="10dp"
                 android:onClick="onClick"/>
 
-
+-->
 
         </LinearLayout>
 

@@ -7,4 +7,7 @@
     <string name="elegir_imagen">Choose image</string>
     <string name="descripcion">Description</string>
     <string name="lista_de_momentos">Moments List</string>
+    <string name="Buscar">Search</string>
+    <string name="opcion1">Option 1</string>
+    <string name="opcion2">Option 2</string>
 </resources>

@@ -13,6 +13,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -125,6 +127,46 @@ public class MomentoList extends AppCompatActivity {
         });
 
     }
+
+
+
+    //Metodo para mostrar los botones de accion
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+
+    //Metodo para agregar las acciones de los botones
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if(id == R.id.buscarrTag){
+            Toast.makeText(this,"Buscar", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        if(id == R.id.opcion1){
+            //Toast.makeText(this,"Opcion 1", Toast.LENGTH_SHORT).show();
+            Intent miIntent;
+            miIntent=new Intent(MomentoList.this,SubirMomentoActivity.class);
+            startActivity(miIntent);
+            //return true;
+        }
+
+        if(id == R.id.opcion2){
+            //Toast.makeText(this,"Opcion 2", Toast.LENGTH_SHORT).show();
+            Intent miIntent;
+            miIntent=new Intent(MomentoList.this,ConsultarUsuariosActivity.class);
+            startActivity(miIntent);
+            //return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+
+    }
+
+
 
 
     //ImageView imageViewFood;

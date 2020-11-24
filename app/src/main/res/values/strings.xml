@@ -6,4 +6,7 @@
     <string name="elegir_imagen">Elegir imagen</string>
     <string name="descripcion">Descripcion</string>
     <string name="lista_de_momentos">Lista de Momentos</string>
+    <string name="Buscar">Buscar</string>
+    <string name="opcion1">Agregar momento</string>
+    <string name="opcion2">Consultar usuario</string>
 </resources>
