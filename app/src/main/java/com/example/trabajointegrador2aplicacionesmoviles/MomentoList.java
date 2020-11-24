@@ -50,7 +50,7 @@ public class MomentoList extends AppCompatActivity {
         gridView.setAdapter(adapter);
 
         // get all data from sqlite
-        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");
+        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");// ORDER BY id DESC");
         list.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
