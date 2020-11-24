@@ -1,8 +1,9 @@
 package com.example.trabajointegrador2aplicacionesmoviles.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Momento {
+public class Momento implements Serializable {
 
     private int id;
     private String descripcion;

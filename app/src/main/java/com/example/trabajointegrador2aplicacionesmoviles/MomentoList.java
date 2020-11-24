@@ -3,6 +3,7 @@ package com.example.trabajointegrador2aplicacionesmoviles;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,8 +40,6 @@ public class MomentoList extends AppCompatActivity {
     ArrayList<Momento> list;
     MomentoListAdapter adapter = null;
 
-
-    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.momento_list_activity);
@@ -107,7 +107,25 @@ public class MomentoList extends AppCompatActivity {
                 return true;
             }
         });
+
+
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                TextView v = (TextView) view.findViewById(R.id.txtDescripcion);
+                //Toast.makeText(getApplicationContext(), "seleccionado la descripcion: "+v.getText(),Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(view.getContext(), MomentoDetail.class);
+
+                intent.putExtra("Position", position);
+                startActivity(intent);
+            }
+        });
+
     }
+
 
     //ImageView imageViewFood;
     private void showDialogUpdate(Activity activity, final int position){
@@ -238,4 +256,5 @@ public class MomentoList extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
 }
