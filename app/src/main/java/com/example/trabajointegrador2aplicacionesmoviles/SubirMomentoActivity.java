@@ -82,7 +82,7 @@ public class SubirMomentoActivity extends AppCompatActivity {
 
         sqLiteHelper = new ConexionSQLiteHelper(this, "MomentoDB.sqlite", null, 1);
 
-//        sqLiteHelper.queryData("DROP TABLE IF EXISTS MOMENTO");
+    //   sqLiteHelper.queryData("DROP TABLE IF EXISTS MOMENTO");
         sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR)");
 
         //......................................................................................

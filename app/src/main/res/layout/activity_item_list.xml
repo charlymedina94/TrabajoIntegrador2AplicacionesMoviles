@@ -11,15 +11,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.TrabajoIntegrador2AplicacionesMoviles.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/Theme.TrabajoIntegrador2AplicacionesMoviles.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:theme="@style/Theme.TrabajoIntegrador2AplicacionesMoviles.AppBarOverlay"/>
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -30,6 +22,7 @@
         <include layout="@layout/item_list" />
     </FrameLayout>
 
+    <!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -38,4 +31,8 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
+    -->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+

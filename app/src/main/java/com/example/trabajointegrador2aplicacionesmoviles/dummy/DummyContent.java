@@ -13,8 +13,6 @@ import java.util.Map;
  */
 public class DummyContent {
 
-    //agrego linea para subir cambios
-
     /**
      * An array of sample (dummy) items.
      */
@@ -25,13 +23,16 @@ public class DummyContent {
      */
     public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
-    private static final int COUNT = 25;
+    //private static final int COUNT = 25;
 
     static {
         // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
-        }
+        //for (int i = 1; i <= COUNT; i++) {
+        //   addItem(createDummyItem(i));
+        addItem(new DummyItem("1", "Universidad Nacional Arturo Jauretche", "http://www.unaj.edu.ar"));
+        addItem(new DummyItem("2", "Universidad Nacional de La Plata", "http://www.unlp.edu.ar"));
+        addItem(new DummyItem("3", "Universidad Nacional de Buenos Aires", "http://www.uba.com"));
+        //}
     }
 
     private static void addItem(DummyItem item) {
@@ -39,36 +40,24 @@ public class DummyContent {
         ITEM_MAP.put(item.id, item);
     }
 
-    private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
-
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
-    }
 
     /**
      * A dummy item representing a piece of content.
      */
     public static class DummyItem {
         public final String id;
-        public final String content;
-        public final String details;
+        public final String website_name;
+        public final String website_url;
 
-        public DummyItem(String id, String content, String details) {
+        public DummyItem(String id, String website_name, String website_url) {
             this.id = id;
-            this.content = content;
-            this.details = details;
+            this.website_name = website_name;
+            this.website_url = website_url;
         }
 
         @Override
         public String toString() {
-            return content;
+            return website_name;
         }
     }
 }

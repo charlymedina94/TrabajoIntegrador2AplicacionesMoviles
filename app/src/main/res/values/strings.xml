@@ -9,4 +9,5 @@
     <string name="Buscar">Buscar</string>
     <string name="opcion1">Agregar momento</string>
     <string name="opcion2">Consultar usuario</string>
+    <string name="opcion3">Universidades</string>
 </resources>

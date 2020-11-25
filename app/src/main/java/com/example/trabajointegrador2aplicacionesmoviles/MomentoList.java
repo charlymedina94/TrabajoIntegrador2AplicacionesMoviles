@@ -116,7 +116,7 @@ public class MomentoList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                TextView v = (TextView) view.findViewById(R.id.txtDescripcion);
+                //TextView v = (TextView) view.findViewById(R.id.txtDescripcion);
                 //Toast.makeText(getApplicationContext(), "seleccionado la descripcion: "+v.getText(),Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(view.getContext(), MomentoDetail.class);
@@ -155,11 +155,15 @@ public class MomentoList extends AppCompatActivity {
         }
 
         if(id == R.id.opcion2){
-            //Toast.makeText(this,"Opcion 2", Toast.LENGTH_SHORT).show();
             Intent miIntent;
             miIntent=new Intent(MomentoList.this,ConsultarUsuariosActivity.class);
             startActivity(miIntent);
-            //return true;
+        }
+
+        if(id == R.id.opcion3){
+            Intent miIntent;
+            miIntent=new Intent(MomentoList.this,ItemListActivity.class);
+            startActivity(miIntent);
         }
 
         return super.onOptionsItemSelected(item);

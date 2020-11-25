@@ -9,6 +9,9 @@
         android:id="@+id/opcion2"
         android:title="@string/opcion2" />
     <item
+        android:id="@+id/opcion3"
+        android:title="@string/opcion3" />
+    <item
         android:id="@+id/buscarrTag"
         android:icon="@drawable/buscar"
         android:title="@string/Buscar"

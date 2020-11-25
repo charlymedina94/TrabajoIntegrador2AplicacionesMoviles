@@ -1,8 +1,10 @@
 package com.example.trabajointegrador2aplicacionesmoviles;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.example.trabajointegrador2aplicacionesmoviles.dummy.DummyContent;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import androidx.fragment.app.Fragment;
@@ -10,9 +12,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
-import com.example.trabajointegrador2aplicacionesmoviles.dummy.DummyContent;
+
 
 /**
  * A fragment representing a single Item detail screen.
@@ -52,7 +56,7 @@ public class ItemDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.content);
+                appBarLayout.setTitle(mItem.website_name);
             }
         }
     }
@@ -64,7 +68,13 @@ public class ItemDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.item_detail)).setText(mItem.details);
+
+            @SuppressLint("WrongViewCast") WebView webview= ((WebView) rootView.findViewById(R.id.item_detail));
+            webview.setWebViewClient(new WebViewClient());
+            webview.loadUrl(mItem.website_url);
+
+
+            //((TextView) rootView.findViewById(R.id.item_detail)).loadUrl(mItem.website_url);
         }
 
         return rootView;
