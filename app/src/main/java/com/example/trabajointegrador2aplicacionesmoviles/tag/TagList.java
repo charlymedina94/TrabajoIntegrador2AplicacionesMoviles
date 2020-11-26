@@ -89,8 +89,15 @@ public class TagList extends AppCompatActivity {
             byte[] image = cursor.getBlob(2);
             String fecha=cursor.getString(3);
             String ubicacion=cursor.getString(4);
+            String universidad=cursor.getString(5);
+            String urlEncuentro=cursor.getString(6);
+            String lugar=cursor.getString(7);
+            String aula=cursor.getString(8);
+            String fechaEncuentro=cursor.getString(9);
+            String horaEncuentro=cursor.getString(10);
+            String categoria=cursor.getString(11);
 
-            list.add(new Momento(descripcion, image, id,fecha,ubicacion));
+            list.add(new Momento(descripcion, image, id,fecha,ubicacion, universidad, urlEncuentro, lugar, aula, fechaEncuentro, horaEncuentro, categoria));
         }
         adapter.notifyDataSetChanged();
 
@@ -221,8 +228,15 @@ public class TagList extends AppCompatActivity {
             byte[] image = cursor.getBlob(2);
             String fecha=cursor.getString(3);
             String ubicacion=cursor.getString(4);
+            String universidad=cursor.getString(5);
+            String urlEncuentro=cursor.getString(6);
+            String lugar=cursor.getString(7);
+            String aula=cursor.getString(8);
+            String fechaEncuentro=cursor.getString(9);
+            String horaEncuentro=cursor.getString(10);
+            String categoria=cursor.getString(11);
 
-            list.add(new Momento(descripcion, image, id,fecha,ubicacion));
+            list.add(new Momento(descripcion, image, id,fecha,ubicacion, universidad, urlEncuentro, lugar, aula, fechaEncuentro, horaEncuentro, categoria));
         }
         adapter.notifyDataSetChanged();
     }

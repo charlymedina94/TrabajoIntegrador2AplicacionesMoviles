@@ -1,14 +1,21 @@
 package com.example.trabajointegrador2aplicacionesmoviles;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.trabajointegrador2aplicacionesmoviles.ConexionSQLiteHelper;
+import com.example.trabajointegrador2aplicacionesmoviles.tag.BuscarTagActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
         sqLiteHelper = new ConexionSQLiteHelper(this, "MomentoDB.sqlite", null, 1);
-        //        sqLiteHelper.queryData("DROP TABLE IF EXISTS MOMENTO");
-        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR)");
+        //sqLiteHelper.queryData("DROP TABLE IF EXISTS MOMENTO");
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR,universidad VARCHAR, urlEncuentro VARCHAR, lugar VARCHAR, aula VARCHAR, fechaEncuentro VARCHAR, horaEncuentro VARCHAR, categoria VARCHAR)");
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +143,4 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-
 }

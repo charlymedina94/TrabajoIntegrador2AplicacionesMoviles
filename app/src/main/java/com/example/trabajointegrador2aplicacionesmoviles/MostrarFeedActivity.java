@@ -54,6 +54,8 @@ public class MostrarFeedActivity extends AppCompatActivity {
             }
         });
 
+
+        /*
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +77,8 @@ public class MostrarFeedActivity extends AppCompatActivity {
             }
         });
 
+
+         */
         /*
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,12 +1,14 @@
 package com.example.trabajointegrador2aplicacionesmoviles;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.view.KeyEvent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -21,7 +23,6 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -53,6 +55,14 @@ public class SubirMomentoActivity extends AppCompatActivity {
     private final String RUTA_IMAGEN = CARPETA_RAIZ + "misFotos";
     String path;
 
+    EditText universidad;
+    EditText urlEncuentro;
+    EditText lugar;
+    EditText aula;
+    EditText fechaEncuentro;
+    EditText horaEncuentro;
+    EditText categoria;
+
     final int REQUEST_CODE_GALLERY = 999;
     final int REQUEST_CODE_FOTO = 998;
 
@@ -73,16 +83,16 @@ public class SubirMomentoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subir_momento);
+
+        checkLocationPermission();
+
+
         init();
-
-
-
-
 
         sqLiteHelper = new ConexionSQLiteHelper(this, "MomentoDB.sqlite", null, 1);
 
-    //   sqLiteHelper.queryData("DROP TABLE IF EXISTS MOMENTO");
-//        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR)");
+       //sqLiteHelper.queryData("DROP TABLE IF EXISTS MOMENTO");
+        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR ,universidad VARCHAR, urlEncuentro VARCHAR, lugar VARCHAR, aula VARCHAR, fechaEncuentro VARCHAR, horaEncuentro VARCHAR, categoria VARCHAR)");
 
         //......................................................................................
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -110,9 +120,17 @@ public class SubirMomentoActivity extends AppCompatActivity {
                     DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy hh:mm a");
                     String fecha = dateFormat.format(date);
                     String ubicacion = "";
+                    /*
+                    String universidad = "Unaj";
+                    String urlEncuentro;
+                    String lugar;
+                    String aula;
+                    String fechaEncuentro;
+                    String horaEncuentro;
+                    String categoria;
+                    */
 
-
-                    //......................................................................................
+                    //..................................  UBICACION ....................................................
 
                     flag = displayGpsStatus();
                     if (flag) {
@@ -164,11 +182,21 @@ public class SubirMomentoActivity extends AppCompatActivity {
 
                     sqLiteHelper.insertData(
                             edtDescripcion.getText().toString().trim(),
-                            imageViewToByte(imageView), fecha, ubicacion
+                            imageViewToByte(imageView),
+                            fecha,
+                            ubicacion,
+                            universidad.getText().toString().trim(),
+                            urlEncuentro.getText().toString().trim(),
+                            lugar.getText().toString().trim(),
+                            aula.getText().toString().trim(),
+                            fechaEncuentro.getText().toString().trim(),
+                            horaEncuentro.getText().toString().trim(),
+                            categoria.getText().toString().trim()
                     );
                     Toast.makeText(getApplicationContext(), "Agregado correctamente!", Toast.LENGTH_SHORT).show();
-                    edtDescripcion.setText("");
-                    imageView.setImageResource(R.mipmap.ic_launcher);
+                    //edtDescripcion.setText("");
+                    //imageView.setImageResource(R.mipmap.ic_launcher);
+
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "No se pudo subir el momento!", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
@@ -402,15 +430,6 @@ public class SubirMomentoActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-
-    private void init() {
-        edtDescripcion = (EditText) findViewById(R.id.edtDescripcion);
-        btnChoose = (Button) findViewById(R.id.btnChoose);
-        btnAdd = (Button) findViewById(R.id.btnAdd);
-        //btnList = (Button) findViewById(R.id.btnList);
-        imageView = (ImageView) findViewById(R.id.imageView);
-    }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
@@ -420,6 +439,24 @@ public class SubirMomentoActivity extends AppCompatActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+
+
+
+    private void init() {
+        edtDescripcion = (EditText) findViewById(R.id.edtDescripcion);
+        btnChoose = (Button) findViewById(R.id.btnChoose);
+        btnAdd = (Button) findViewById(R.id.btnAdd);
+        //btnList = (Button) findViewById(R.id.btnList);
+        imageView = (ImageView) findViewById(R.id.imageView);
+        universidad = (EditText) findViewById(R.id.universidad);
+        urlEncuentro = (EditText) findViewById(R.id.urlEncuentro);
+        lugar  = (EditText) findViewById(R.id.lugar);
+        aula  = (EditText) findViewById(R.id.aula);
+        fechaEncuentro  = (EditText) findViewById(R.id.fechaEncuentro);
+        horaEncuentro  = (EditText) findViewById(R.id.horaEncuentro);
+        categoria  = (EditText) findViewById(R.id.categoria);
     }
 
 }

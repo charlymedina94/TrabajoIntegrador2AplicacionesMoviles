@@ -60,9 +60,12 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
 
 
-    public void insertData(String descripcion, byte[] image, String fecha, String ubicacion){
+    public void insertData(String descripcion, byte[] image, String fecha, String ubicacion, String universidad,
+                           String urlEncuentro, String lugar, String aula,String fechaEncuentro, String horaEncuentro,
+                           String categoria){
+
         SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO MOMENTO VALUES (NULL, ?, ?,?,?)";
+        String sql = "INSERT INTO MOMENTO VALUES (NULL, ?,?,?,?,?,?,?,?,?,?,?)";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
@@ -71,6 +74,14 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         statement.bindBlob(2, image);
         statement.bindString(3, fecha);
         statement.bindString(4, ubicacion);
+        statement.bindString(5, universidad);
+        statement.bindString(6, urlEncuentro);
+        statement.bindString(7, lugar);
+        statement.bindString(8, aula);
+        statement.bindString(9, fechaEncuentro);
+        statement.bindString(10, horaEncuentro);
+        statement.bindString(11, categoria);
+
 
         statement.executeInsert();
     }
