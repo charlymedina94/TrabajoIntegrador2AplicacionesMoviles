@@ -28,8 +28,9 @@ public class ItemDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-        setSupportActionBar(toolbar);
+
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+        //setSupportActionBar(toolbar);
 
         /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -45,10 +46,12 @@ public class ItemDetailActivity extends AppCompatActivity {
          */
 
         // Show the Up button in the action bar.
+        /*
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+         */
 
         // savedInstanceState is non-null when there is fragment state
         // saved from previous configurations of this activity

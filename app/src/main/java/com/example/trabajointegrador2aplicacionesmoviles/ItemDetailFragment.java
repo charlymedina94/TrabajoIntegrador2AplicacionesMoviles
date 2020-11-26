@@ -54,10 +54,10 @@ public class ItemDetailFragment extends Fragment {
             mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-            if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.website_name);
-            }
+            //CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+            //if (appBarLayout != null) {
+            //    appBarLayout.setTitle(mItem.website_name);
+            //}
         }
     }
 
@@ -69,7 +69,7 @@ public class ItemDetailFragment extends Fragment {
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
 
-            @SuppressLint("WrongViewCast") WebView webview= ((WebView) rootView.findViewById(R.id.item_detail));
+            WebView webview= ((WebView) rootView.findViewById(R.id.item_detail));
             webview.setWebViewClient(new WebViewClient());
             webview.loadUrl(mItem.website_url);
 
