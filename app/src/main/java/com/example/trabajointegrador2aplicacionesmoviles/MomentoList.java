@@ -3,7 +3,6 @@ package com.example.trabajointegrador2aplicacionesmoviles;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,9 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,7 +30,6 @@ import com.example.trabajointegrador2aplicacionesmoviles.entidades.Momento;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class MomentoList extends AppCompatActivity {
@@ -42,17 +38,19 @@ public class MomentoList extends AppCompatActivity {
     ArrayList<Momento> list;
     MomentoListAdapter adapter = null;
 
+
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.momento_list_activity);
-
         gridView = (ListView) findViewById(R.id.gridView);
         list = new ArrayList<>();
         adapter = new MomentoListAdapter(this, R.layout.momento_items, list);
         gridView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         // get all data from sqlite
-        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");// ORDER BY id DESC");
+        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO ORDER BY id DESC");// descendente
         list.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
@@ -64,7 +62,7 @@ public class MomentoList extends AppCompatActivity {
 
             list.add(new Momento(descripcion, image, id,fecha,ubicacion));
         }
-        adapter.notifyDataSetChanged();
+
 
         gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

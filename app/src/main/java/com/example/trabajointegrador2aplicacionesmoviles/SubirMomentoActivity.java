@@ -1,7 +1,6 @@
 package com.example.trabajointegrador2aplicacionesmoviles;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -22,6 +21,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +29,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -74,16 +73,16 @@ public class SubirMomentoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subir_momento);
-
-        checkLocationPermission();
-
-
         init();
+
+
+
+
 
         sqLiteHelper = new ConexionSQLiteHelper(this, "MomentoDB.sqlite", null, 1);
 
     //   sqLiteHelper.queryData("DROP TABLE IF EXISTS MOMENTO");
-        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR)");
+//        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR)");
 
         //......................................................................................
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -92,6 +91,7 @@ public class SubirMomentoActivity extends AppCompatActivity {
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                checkLocationPermission();
                 ActivityCompat.requestPermissions(
                         SubirMomentoActivity.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
@@ -409,6 +409,17 @@ public class SubirMomentoActivity extends AppCompatActivity {
         btnAdd = (Button) findViewById(R.id.btnAdd);
         //btnList = (Button) findViewById(R.id.btnList);
         imageView = (ImageView) findViewById(R.id.imageView);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            // Esto es lo que hace mi botón al pulsar ir a atrás
+            Intent intent = new Intent(SubirMomentoActivity.this, MomentoList.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }
