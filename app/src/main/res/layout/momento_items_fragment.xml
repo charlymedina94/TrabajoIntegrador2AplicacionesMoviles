@@ -7,38 +7,39 @@
     <ImageView
         android:id="@+id/imgFragment"
         android:layout_width="match_parent"
-        android:layout_height="295dp"
+        android:layout_height="380dp"
+        android:layout_above="@+id/txtDescripcionFragment"
         android:layout_alignParentTop="true"
         android:layout_gravity="center"
-        android:layout_marginTop="18dp"/>
+        android:layout_marginTop="53dp"
+        android:layout_marginBottom="0dp" />
 
     <TextView
         android:id="@+id/txtDescripcionFragment"
         android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtUbicacion"
         android:layout_gravity="center"
-        android:layout_marginBottom="320dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="129dp"
         android:textAlignment="center"
         android:textSize="17sp" />
 
     <TextView
         android:id="@+id/txtFecha"
         android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="215dp"
         android:textAlignment="center"
         android:textSize="17sp" />
 
     <TextView
         android:id="@+id/txtUbicacion"
         android:layout_width="match_parent"
-        android:layout_height="76dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="118dp"
+        android:layout_marginBottom="87dp"
         android:textAlignment="center"
         android:textSize="17sp" />
 
