@@ -152,16 +152,9 @@ public class MomentoList extends AppCompatActivity {
     }
 
 
-/*
-    //Metodo para mostrar los botones de accion
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
- */
 
 
-    //                            ############################################# CATEGORIA ################################
+    //  ############################################# BUSCAR POR CATEGORIA ################################
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -204,8 +197,28 @@ public class MomentoList extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
 
+                if (newText.equals("")) {
+                    Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");
+                    list.clear();
+                    while (cursor.moveToNext()) {
+                        int id = cursor.getInt(0);
+                        String descripcion = cursor.getString(1);
+                        byte[] image = cursor.getBlob(2);
+                        String fecha = cursor.getString(3);
+                        String ubicacion = cursor.getString(4);
+                        String universidad = cursor.getString(5);
+                        String urlEncuentro = cursor.getString(6);
+                        String lugar = cursor.getString(7);
+                        String aula = cursor.getString(8);
+                        String fechaEncuentro = cursor.getString(9);
+                        String horaEncuentro = cursor.getString(10);
+                        String categoria = cursor.getString(11);
 
-                return false;
+                        list.add(new Momento(descripcion, image, id, fecha, ubicacion, universidad, urlEncuentro, lugar, aula, fechaEncuentro, horaEncuentro, categoria));
+                    }
+                }
+
+                    return false;
             }
         });
         return super.onCreateOptionsMenu(menu);
@@ -330,6 +343,7 @@ public class MomentoList extends AppCompatActivity {
         });
         dialogDelete.show();
     }
+
 
     private void updateFoodList(){
         // get all data from sqlite
