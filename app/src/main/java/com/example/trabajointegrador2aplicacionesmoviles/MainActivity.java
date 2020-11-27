@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 String pass=e2.getText().toString();
                 Boolean chkdnipassword= conn.dniPassword(dni,pass);
                 if (chkdnipassword==true){
-                    Toast.makeText(getApplicationContext(),"Logueo exitoso",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"Logueo exitoso",Toast.LENGTH_SHORT).show();
                     guardarPreferencias();
 
 

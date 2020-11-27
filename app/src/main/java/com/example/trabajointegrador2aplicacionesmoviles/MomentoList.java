@@ -57,7 +57,7 @@ public class MomentoList extends AppCompatActivity {
 
 
         // get all data from sqlite
-        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO ORDER BY id DESC");
+        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");
         list.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
@@ -182,7 +182,7 @@ public class MomentoList extends AppCompatActivity {
 
                 searchView.clearFocus();
 
-                    Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO WHERE categoria ='" + query + "' ORDER BY id DESC");
+                    Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO WHERE categoria ='" + query);
                     list.clear();
                     while (cursor.moveToNext()) {
                         int id = cursor.getInt(0);
@@ -240,6 +240,12 @@ public class MomentoList extends AppCompatActivity {
         if(id == R.id.opcion3){
             Intent miIntent;
             miIntent=new Intent(MomentoList.this,ItemListActivity.class);
+            startActivity(miIntent);
+        }
+
+        if(id == R.id.opcion4){
+            Intent miIntent;
+            miIntent=new Intent(MomentoList.this,MainActivity.class);
             startActivity(miIntent);
         }
 

@@ -72,7 +72,7 @@ public class MomentoDetail extends AppCompatActivity {
 
 
         // get all data from sqlite
-        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO ORDER BY id DESC");
+        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");
             cursor.moveToPosition(position);
             int id = cursor.getInt(0);
             String descripcion = cursor.getString(1);

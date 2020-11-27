@@ -31,7 +31,13 @@ public class DummyContent {
         //   addItem(createDummyItem(i));
         addItem(new DummyItem("1", "Universidad Nacional Arturo Jauretche", "http://www.unaj.edu.ar"));
         addItem(new DummyItem("2", "Universidad Nacional de La Plata", "http://www.unlp.edu.ar"));
-        addItem(new DummyItem("3", "Universidad Nacional de Buenos Aires", "http://www.uba.com"));
+        addItem(new DummyItem("3", "Universidad Nacional de Quilmes", "http://www.unq.edu.ar/"));
+        addItem(new DummyItem("4", "Universidad Nacional de La Matanza", "http://www.unlam.edu.ar/"));
+        addItem(new DummyItem("5", "Universidad Nacional de Lanus", "http://www.unla.edu.ar/"));
+        addItem(new DummyItem("6", "Universidad Nacional de Lomas de Zamora", "http://www.unlz.edu.ar/"));
+        addItem(new DummyItem("7", "Universidad Nacional de San Martin", "http://www.unsam.edu.ar/"));
+        addItem(new DummyItem("8", "Universidad Nacional de Moreno", "http://www.unm.edu.ar/"));
+        addItem(new DummyItem("9", "Universidad Nacional de Almirante Brown", "http://www.unab.edu.ar/"));
         //}
     }
 
