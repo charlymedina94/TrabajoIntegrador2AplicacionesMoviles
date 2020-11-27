@@ -11,10 +11,11 @@
     <item
         android:id="@+id/opcion3"
         android:title="@string/opcion3" />
-    <item
-        android:id="@+id/buscarrTag"
-        android:icon="@drawable/buscar"
-        android:title="@string/Buscar"
-        app:showAsAction="always" />
 
+    <item
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/buscar"
+        android:title="Categoria"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom|withText" />
 </menu>

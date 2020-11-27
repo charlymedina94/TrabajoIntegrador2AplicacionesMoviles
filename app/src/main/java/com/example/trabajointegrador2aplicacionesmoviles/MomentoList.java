@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,12 +22,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 
 import com.example.trabajointegrador2aplicacionesmoviles.entidades.Momento;
 
@@ -89,6 +92,9 @@ public class MomentoList extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int item) {
                         if (item == 0) {
                             // update
+
+
+
                             Cursor c = SubirMomentoActivity.sqLiteHelper.getData("SELECT id FROM MOMENTO");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
@@ -131,7 +137,18 @@ public class MomentoList extends AppCompatActivity {
 
                 Intent intent = new Intent(view.getContext(), MomentoDetail.class);
 
+                //int idposition = list.indexOf(position);
+
+
+
+                //position = position +1;
+
+                //System.out.println(position+" POSICIOOOOOOOOOOOOOOOOOOOON");
+
+
                 intent.putExtra("Position", position);
+                //intent.putExtra("Position", idposition);
+
                 startActivity(intent);
             }
         });
@@ -139,23 +156,72 @@ public class MomentoList extends AppCompatActivity {
     }
 
 
-
+/*
     //Metodo para mostrar los botones de accion
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+ */
+
+
+    //                            ############################################# CATEGORIA ################################
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        MenuItem searchViewItem = menu.findItem(R.id.app_bar_search);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchViewItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                searchView.clearFocus();
+
+                    Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO WHERE categoria ='" + query + "' ORDER BY id DESC");
+                    list.clear();
+                    while (cursor.moveToNext()) {
+                        int id = cursor.getInt(0);
+                        String descripcion = cursor.getString(1);
+                        byte[] image = cursor.getBlob(2);
+                        String fecha = cursor.getString(3);
+                        String ubicacion = cursor.getString(4);
+                        String universidad = cursor.getString(5);
+                        String urlEncuentro = cursor.getString(6);
+                        String lugar = cursor.getString(7);
+                        String aula = cursor.getString(8);
+                        String fechaEncuentro = cursor.getString(9);
+                        String horaEncuentro = cursor.getString(10);
+                        String categoria = cursor.getString(11);
+
+                        list.add(new Momento(descripcion, image, id, fecha, ubicacion, universidad, urlEncuentro, lugar, aula, fechaEncuentro, horaEncuentro, categoria));
+                    }
+
+                return false;
+
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
 
 
     //Metodo para agregar las acciones de los botones
 
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
-
-        if(id == R.id.buscarrTag){
-            Toast.makeText(this,"Buscar", Toast.LENGTH_SHORT).show();
-            return true;
-        }
 
         if(id == R.id.opcion1){
             //Toast.makeText(this,"Opcion 1", Toast.LENGTH_SHORT).show();
