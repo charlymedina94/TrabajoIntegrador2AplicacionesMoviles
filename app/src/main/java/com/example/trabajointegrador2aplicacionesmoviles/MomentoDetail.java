@@ -34,6 +34,16 @@ public class MomentoDetail extends AppCompatActivity {
     TextView fechaa;
     TextView ubicacionn;
 
+    TextView universidadd;
+    TextView urlEncuentroo;
+    TextView lugarr;
+    TextView aulaa;
+    TextView fechaEncuentroo;
+    TextView horaEncuentroo;
+    TextView categoriaa;
+
+
+
     ImageView imgFragment;
     public static ConexionSQLiteHelper sqLiteHelper;
 
@@ -47,6 +57,14 @@ public class MomentoDetail extends AppCompatActivity {
         fechaa = (TextView) findViewById(R.id.txtFecha);
         ubicacionn = (TextView) findViewById(R.id.txtUbicacion);
         imgFragment = (ImageView) findViewById(R.id.imgFragment);
+
+        universidadd = (TextView) findViewById(R.id.txtuniversidad);
+        urlEncuentroo = (TextView) findViewById(R.id.txturlEncuentro);
+        lugarr = (TextView) findViewById(R.id.txtlugar);
+        aulaa = (TextView) findViewById(R.id.txtaula);
+        fechaEncuentroo = (TextView) findViewById(R.id.txtfechaEncuentro);
+        horaEncuentroo = (TextView) findViewById(R.id.txthoraEncuentro);
+        categoriaa = (TextView) findViewById(R.id.txtcategoria);
 
         Intent intent = getIntent();
         position = intent.getExtras().getInt("Position");
@@ -62,11 +80,28 @@ public class MomentoDetail extends AppCompatActivity {
             imgFragment.setImageBitmap(getImageFromBLOB(cursor.getBlob(cursor.getColumnIndex("image"))));;
             String fecha = cursor.getString(3);
             String ubicacion = cursor.getString(4);
+            String universidad = cursor.getString(5);
+            String urlEncuentro = cursor.getString(6);
+            String lugar = cursor.getString(7);
+            String aula = cursor.getString(8);
+            String fechaEncuentro = cursor.getString(9);
+            String horaEncuentro = cursor.getString(10);
+            String categoria = cursor.getString(11);
+
 
             descripcionn.setText(descripcion);
             fechaa.setText(fecha);
             ubicacionn.setText(ubicacion);
-            //imgFragment.setImageBitmap(image);
+
+            universidadd.setText(universidad);
+            urlEncuentroo.setText(urlEncuentro);
+            lugarr.setText(lugar);
+            aulaa.setText(aula);
+            fechaEncuentroo.setText(fechaEncuentro);
+            horaEncuentroo.setText(horaEncuentro);
+            categoriaa.setText(categoria);
+
+        //imgFragment.setImageBitmap(image);
             //new Momento(descripcion, image, id, fecha, ubicacion);
 
 

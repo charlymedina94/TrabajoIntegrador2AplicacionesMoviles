@@ -1,3 +1,5 @@
+/*
+
 package com.example.trabajointegrador2aplicacionesmoviles;
 
 import android.Manifest;
@@ -55,7 +57,7 @@ public class MostrarFeedActivity extends AppCompatActivity {
         });
 
 
-        /*
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,8 +80,8 @@ public class MostrarFeedActivity extends AppCompatActivity {
         });
 
 
-         */
-        /*
+
+
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +90,7 @@ public class MostrarFeedActivity extends AppCompatActivity {
             }
         });
 
-         */
+
     }
 
     public static byte[] imageViewToByte(ImageView image) {
@@ -147,3 +149,5 @@ public class MostrarFeedActivity extends AppCompatActivity {
 
 
 }
+
+*/

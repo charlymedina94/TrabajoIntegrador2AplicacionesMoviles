@@ -1,3 +1,5 @@
+/*
+
 package com.example.trabajointegrador2aplicacionesmoviles.tag;
 
 import android.Manifest;
@@ -129,3 +131,5 @@ public class BuscarTagActivity extends AppCompatActivity {
 
 
 }
+
+ */

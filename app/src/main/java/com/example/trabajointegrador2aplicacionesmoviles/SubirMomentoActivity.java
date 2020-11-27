@@ -3,6 +3,9 @@ package com.example.trabajointegrador2aplicacionesmoviles;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -25,8 +28,11 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -59,8 +65,8 @@ public class SubirMomentoActivity extends AppCompatActivity {
     EditText urlEncuentro;
     EditText lugar;
     EditText aula;
-    EditText fechaEncuentro;
-    EditText horaEncuentro;
+    TextView fechaEncuentro;
+    TextView horaEncuentro;
     EditText categoria;
 
     final int REQUEST_CODE_GALLERY = 999;
@@ -194,8 +200,16 @@ public class SubirMomentoActivity extends AppCompatActivity {
                             categoria.getText().toString().trim()
                     );
                     Toast.makeText(getApplicationContext(), "Agregado correctamente!", Toast.LENGTH_SHORT).show();
-                    //edtDescripcion.setText("");
-                    //imageView.setImageResource(R.mipmap.ic_launcher);
+                    edtDescripcion.setText("");
+                    universidad.setText("");
+                    urlEncuentro.setText("");
+                    lugar.setText("");
+                    aula.setText("");
+                    fechaEncuentro.setText("");
+                    horaEncuentro.setText("");
+                    categoria.setText("");
+
+                    imageView.setImageResource(R.drawable.icono_background);
 
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "No se pudo subir el momento!", Toast.LENGTH_SHORT).show();
@@ -203,6 +217,58 @@ public class SubirMomentoActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+        Button buttonFechaEncuentro = (Button) findViewById(R.id.buttonFechaEncuentro);
+        buttonFechaEncuentro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                final Calendar c= Calendar.getInstance();
+                int dia=c.get(Calendar.DAY_OF_MONTH);
+                int mes=c.get(Calendar.MONTH);
+                int ano=c.get(Calendar.YEAR);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(SubirMomentoActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        fechaEncuentro.setText(dayOfMonth+"/"+(monthOfYear+1)+"/"+year);
+                    }
+                }
+                        ,ano,mes,dia);
+                datePickerDialog.show();
+
+
+            }
+        });
+
+
+
+        Button buttonHoraEncuentro = (Button) findViewById(R.id.buttonHoraEncuentro);
+        buttonHoraEncuentro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                final Calendar c= Calendar.getInstance();
+                int hora=c.get(Calendar.HOUR_OF_DAY);
+                int minutos=c.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(SubirMomentoActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        horaEncuentro.setText(hourOfDay+":"+minute);
+                    }
+                },hora,minutos,false);
+                timePickerDialog.show();
+
+
+            }
+        });
+
+
 
 /*
         btnList.setOnClickListener(new View.OnClickListener() {
@@ -230,6 +296,20 @@ public class SubirMomentoActivity extends AppCompatActivity {
             return false;
         }
     }
+
+
+    //FECHA
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        TextView textView = (TextView) findViewById(R.id.fechaEncuentro);
+        textView.setText(currentDateString);
+    }
+
+
 
     /*---- Listener que obtiene las coordenadas ---- */
     private class MyLocationListener implements LocationListener {
@@ -454,8 +534,8 @@ public class SubirMomentoActivity extends AppCompatActivity {
         urlEncuentro = (EditText) findViewById(R.id.urlEncuentro);
         lugar  = (EditText) findViewById(R.id.lugar);
         aula  = (EditText) findViewById(R.id.aula);
-        fechaEncuentro  = (EditText) findViewById(R.id.fechaEncuentro);
-        horaEncuentro  = (EditText) findViewById(R.id.horaEncuentro);
+        fechaEncuentro  = (TextView) findViewById(R.id.fechaEncuentro);
+        horaEncuentro  = (TextView) findViewById(R.id.horaEncuentro);
         categoria  = (EditText) findViewById(R.id.categoria);
     }
 

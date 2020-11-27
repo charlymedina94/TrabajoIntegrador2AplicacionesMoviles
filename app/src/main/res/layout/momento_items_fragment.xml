@@ -11,6 +11,12 @@
         app:cardCornerRadius="5dp"
         android:layout_margin="10dp">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,8 +52,117 @@
                 android:textSize="17sp"
                 android:layout_margin="5dp"/>
 
+
+
+            <TextView
+                android:id="@+id/nombreUniversidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:inputType="none"
+                android:text="Universidad:" />
+
+            <TextView
+                android:id="@+id/txtuniversidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/nombreUrlEncuentro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:inputType="none"
+                android:text="Link para acceder:" />
+
+            <TextView
+                android:id="@+id/txturlEncuentro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:autoLink="web"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/nombreLugar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:inputType="none"
+                android:text="Ubicación:" />
+
+            <TextView
+                android:id="@+id/txtlugar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/nombreAula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:inputType="none"
+                android:text="Aula:" />
+
+            <TextView
+                android:id="@+id/txtaula"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/nombrefechaEncuentro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:inputType="none"
+                android:text="Fecha:" />
+
+            <TextView
+                android:id="@+id/txtfechaEncuentro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/nombrehoraEncuentro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:inputType="none"
+                android:text="Hora:" />
+
+            <TextView
+                android:id="@+id/txthoraEncuentro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/nombreCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:inputType="none"
+                android:text="Categoría:" />
+
+            <TextView
+                android:id="@+id/txtcategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginBottom="5dp"/>
+
         </LinearLayout>
 
+        </ScrollView>
 
     </androidx.cardview.widget.CardView>
 

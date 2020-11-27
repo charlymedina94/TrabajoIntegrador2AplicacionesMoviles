@@ -130,22 +130,63 @@
 
     </EditText>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
 
-    <EditText
-        android:id="@+id/fechaEncuentro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Fecha"
-        android:inputType="text" />
+            <Button
+                android:id="@+id/buttonFechaEncuentro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Calendario" />
 
-    <EditText
-        android:id="@+id/horaEncuentro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Hora"
-        android:inputType="text" />
+
+            <TextView
+                android:id="@+id/fechaEncuentro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/buttonFechaEncuentro"
+                android:text="Elegir Fecha Encuentro..." />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hora"
+                android:id="@+id/buttonHoraEncuentro"
+                android:layout_below="@+id/bfecha"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/horaEncuentro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/buttonHoraEncuentro"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="Elegir Hora Encuentro..." />
+
+
+
+        </LinearLayout>
 
     <EditText
         android:id="@+id/categoria"

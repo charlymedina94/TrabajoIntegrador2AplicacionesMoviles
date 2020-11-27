@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.trabajointegrador2aplicacionesmoviles.ConexionSQLiteHelper;
-import com.example.trabajointegrador2aplicacionesmoviles.tag.BuscarTagActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,3 +1,5 @@
+/*
+
 package com.example.trabajointegrador2aplicacionesmoviles.tag;
 
 import android.app.Activity;
@@ -54,12 +56,12 @@ public class TagList extends AppCompatActivity {
         adapter = new TagListAdapter(this, R.layout.tag_items, list);
         gridView.setAdapter(adapter);
 
-/*
+
 
         LOGICA DE AGARRAR EL VALOR INGRESADO COMO TAG Y BUSCARLO
 
 
-        Dialog dialog = new Dialog(TagList.this);
+      //  Dialog dialog = new Dialog(TagList.this);
         dialog.setContentView(R.layout.tag_activity);
         search = (EditText) dialog.findViewById(R.id.buscarTag);
 
@@ -75,7 +77,7 @@ public class TagList extends AppCompatActivity {
 
         System.out.println("searchhhh=================================================sdadasdasdsad========== "+holis);
 
- */
+
 
         // get all data from sqlite
 
@@ -157,8 +159,8 @@ public class TagList extends AppCompatActivity {
         dialog.getWindow().setLayout(width, height);
         dialog.show();
 
-        /*
-        imageViewFood.setOnClickListener(new View.OnClickListener() {
+
+        //imageViewFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // request photo library
@@ -170,7 +172,7 @@ public class TagList extends AppCompatActivity {
             }
         });
 
-         */
+
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -276,3 +278,4 @@ public class TagList extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 }
+*/

@@ -1,3 +1,5 @@
+/*
+
 package com.example.trabajointegrador2aplicacionesmoviles.tag;
 
 import android.content.Context;
@@ -78,3 +80,5 @@ public class TagListAdapter extends BaseAdapter {
         return row;
     }
 }
+
+ */
