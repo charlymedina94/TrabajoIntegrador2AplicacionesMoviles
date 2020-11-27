@@ -182,7 +182,7 @@ public class MomentoList extends AppCompatActivity {
 
                 searchView.clearFocus();
 
-                    Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO WHERE categoria ='" + query);
+                    Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO WHERE categoria ='" + query+"'");
                     list.clear();
                     while (cursor.moveToNext()) {
                         int id = cursor.getInt(0);
@@ -257,14 +257,14 @@ public class MomentoList extends AppCompatActivity {
 
 
     //ImageView imageViewFood;
-    private void showDialogUpdate(Activity activity, final int position){
+    private void showDialogUpdate(Activity activity, int position){
 
         final Dialog dialog = new Dialog(activity);
         dialog.setContentView(R.layout.update_momento_activity);
         dialog.setTitle("Update");
 
         //imageViewFood = (ImageView) dialog.findViewById(R.id.imageViewFood);
-        final EditText edtDescripcion = (EditText) dialog.findViewById(R.id.edtDescripcion);
+        EditText edtDescripcion = (EditText) dialog.findViewById(R.id.edtDescripcion);
         Button btnUpdate = (Button) dialog.findViewById(R.id.btnUpdate);
 
         // set width for dialog
