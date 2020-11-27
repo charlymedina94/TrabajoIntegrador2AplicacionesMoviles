@@ -1,31 +1,27 @@
 package com.example.trabajointegrador2aplicacionesmoviles;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.view.KeyEvent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -36,7 +32,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -90,7 +85,7 @@ public class SubirMomentoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subir_momento);
 
-        checkLocationPermission();
+
 
 
         init();
@@ -107,12 +102,13 @@ public class SubirMomentoActivity extends AppCompatActivity {
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkLocationPermission();
+
                 ActivityCompat.requestPermissions(
                         SubirMomentoActivity.this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION},
                         REQUEST_CODE_GALLERY
                 );
+                checkLocationPermission();
             }
         });
 
@@ -479,14 +475,13 @@ public class SubirMomentoActivity extends AppCompatActivity {
                     }
                     break;
                 case REQUEST_CODE_FOTO:
-                    MediaScannerConnection.scanFile(this, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
-                        @Override
-                        public void onScanCompleted(String path, Uri uri) {
-                            Log.i("Ruta de almacenamiento", "Path:" + path);
-                        }
-                    });
-                    Bitmap bitmap = BitmapFactory.decodeFile(path);
-                    imageView.setImageBitmap(bitmap);
+
+                    if (requestCode==REQUEST_CODE_FOTO && resultCode==RESULT_OK){
+                        Bundle extras=data.getExtras();
+                        Bitmap bitmap = (Bitmap) extras.get("data");
+                        imageView.setImageBitmap(bitmap);
+                    }
+
                     break;
             }
 
