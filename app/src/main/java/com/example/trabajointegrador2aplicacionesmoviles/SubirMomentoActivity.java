@@ -205,8 +205,8 @@ public class SubirMomentoActivity extends AppCompatActivity {
                     urlEncuentro.setText("");
                     lugar.setText("");
                     aula.setText("");
-                    fechaEncuentro.setText("");
-                    horaEncuentro.setText("");
+                    fechaEncuentro.setText("Elegir Fecha Encuentro...");
+                    horaEncuentro.setText("Elegir Hora Encuentro...");
                     categoria.setText("");
 
                     imageView.setImageResource(R.drawable.icono_background);
