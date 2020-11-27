@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -40,6 +41,7 @@ public class MomentoList extends AppCompatActivity {
     ListView gridView;
     ArrayList<Momento> list;
     MomentoListAdapter adapter = null;
+    int cont=0;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -402,5 +404,32 @@ public class MomentoList extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    @Override
+    public void onBackPressed(){
+        if (cont == 0) {
+            Toast.makeText(getApplicationContext(), "Presiona una vez más para salir", Toast.LENGTH_SHORT).show();
+            cont++;
+        }else{
+            super.onBackPressed();
+            finishAffinity();
+
+        }
+        new CountDownTimer(3000,1000){
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                cont=0;
+
+            }
+        }.start();
+
+    }
+
 
 }
