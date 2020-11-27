@@ -14,6 +14,11 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.TrabajoIntegrador2AplicacionesMoviles.Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar" >
+    </style>
+
+
+
     <style name="Theme.TrabajoIntegrador2AplicacionesMoviles.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
