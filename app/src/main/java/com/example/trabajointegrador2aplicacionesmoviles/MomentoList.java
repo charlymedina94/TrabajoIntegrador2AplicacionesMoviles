@@ -3,7 +3,6 @@ package com.example.trabajointegrador2aplicacionesmoviles;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,10 +19,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,7 +33,6 @@ import com.example.trabajointegrador2aplicacionesmoviles.entidades.Momento;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class MomentoList extends AppCompatActivity {
@@ -95,7 +91,7 @@ public class MomentoList extends AppCompatActivity {
 
 
 
-                            Cursor c = SubirMomentoActivity.sqLiteHelper.getData("SELECT id FROM MOMENTO");
+                            Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM MOMENTO");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
                                 arrID.add(c.getInt(0));
@@ -105,7 +101,7 @@ public class MomentoList extends AppCompatActivity {
 
                         }else if (item == 1) {
                             // delete
-                            Cursor c = SubirMomentoActivity.sqLiteHelper.getData("SELECT id FROM MOMENTO");
+                            Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM MOMENTO");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
                                 arrID.add(c.getInt(0));
@@ -293,7 +289,7 @@ public class MomentoList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    SubirMomentoActivity.sqLiteHelper.updateData(
+                    MainActivity.sqLiteHelper.updateData(
                             edtDescripcion.getText().toString().trim(),
                             position
                     );
@@ -317,7 +313,7 @@ public class MomentoList extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 try {
-                    SubirMomentoActivity.sqLiteHelper.deleteData(idMomento);
+                    MainActivity.sqLiteHelper.deleteData(idMomento);
                     Toast.makeText(getApplicationContext(), "Borrado correctamente!!!",Toast.LENGTH_SHORT).show();
                 } catch (Exception e){
                     Log.e("error", e.getMessage());
@@ -337,7 +333,7 @@ public class MomentoList extends AppCompatActivity {
 
     private void updateFoodList(){
         // get all data from sqlite
-        Cursor cursor = SubirMomentoActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");
+        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");
         list.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
