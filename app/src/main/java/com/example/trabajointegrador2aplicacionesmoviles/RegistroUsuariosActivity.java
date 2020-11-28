@@ -71,7 +71,7 @@ public class RegistroUsuariosActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "El DNI o Correo ya están registrados " + idResultante, Toast.LENGTH_SHORT).show();
             }
             else{
-                Toast.makeText(getApplicationContext(), "Id Registro: " + idResultante, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Se ha registrado el usuario correctamente", Toast.LENGTH_SHORT).show();
             }
             db.close();
         }

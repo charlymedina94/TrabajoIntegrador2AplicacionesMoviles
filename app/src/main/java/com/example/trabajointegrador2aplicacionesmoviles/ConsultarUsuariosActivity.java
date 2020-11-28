@@ -28,8 +28,6 @@ public class ConsultarUsuariosActivity extends AppCompatActivity {
         campoId= (EditText) findViewById(R.id.documentoId);
         campoNombre= (EditText) findViewById(R.id.campoNombreConsulta);
         campoCorreo= (EditText) findViewById(R.id.campoCorreoConsulta);
-
-
     }
 
     public void onClick(View view) {

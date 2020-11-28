@@ -276,7 +276,7 @@ public class MomentoList extends AppCompatActivity {
                 catch (Exception error) {
                     Log.e("Error al actualizar", error.getMessage());
                 }
-                updateFoodList();
+                updateEventoList();
             }
         });
     }
@@ -295,7 +295,7 @@ public class MomentoList extends AppCompatActivity {
                 } catch (Exception e){
                     Log.e("error", e.getMessage());
                 }
-                updateFoodList();
+                updateEventoList();
             }
         });
 
@@ -309,7 +309,7 @@ public class MomentoList extends AppCompatActivity {
     }
 
 
-    private void updateFoodList(){
+    private void updateEventoList(){
         // get all data from sqlite
         Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");
         list.clear();
@@ -357,7 +357,7 @@ public class MomentoList extends AppCompatActivity {
             try {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                //imageViewFood.setImageBitmap(bitmap);
+
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

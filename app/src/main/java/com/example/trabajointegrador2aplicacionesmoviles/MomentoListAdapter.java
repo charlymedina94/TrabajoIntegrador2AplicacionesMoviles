@@ -64,7 +64,7 @@ public class MomentoListAdapter extends BaseAdapter {
             holder.txtFechaEncuentroo = (TextView) row.findViewById(R.id.txtFechaEncuentroo);
             holder.txtFechaPublicacion = (TextView) row.findViewById(R.id.txtFechaPublicacion);
             holder.txtDescripcion = (TextView) row.findViewById(R.id.txtDescripcion);
-            holder.imageView = (ImageView) row.findViewById(R.id.imgFood);
+            holder.imageView = (ImageView) row.findViewById(R.id.imgEvent);
             row.setTag(holder);
         }
         else {
@@ -77,8 +77,8 @@ public class MomentoListAdapter extends BaseAdapter {
         holder.txtFechaEncuentroo.setText("Fecha evento: "+momento.getFechaEncuentro());
         holder.txtFechaPublicacion.setText(momento.getFecha());
 
-        byte[] foodImage = momento.getImage();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(foodImage, 0, foodImage.length);
+        byte[] eventImage = momento.getImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(eventImage, 0, eventImage.length);
         holder.imageView.setImageBitmap(bitmap);
 
         return row;

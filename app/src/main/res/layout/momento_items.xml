@@ -34,7 +34,7 @@
                 android:layout_marginRight="5dp"/>
 
         <ImageView
-            android:id="@+id/imgFood"
+            android:id="@+id/imgEvent"
             android:layout_width="match_parent"
             android:maxWidth="200dp"
             android:layout_height="250dp"

@@ -85,9 +85,6 @@ public class SubirMomentoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subir_momento);
 
-
-
-
         init();
 
         sqLiteHelper = new ConexionSQLiteHelper(this, "MomentoDB.sqlite", null, 1);
