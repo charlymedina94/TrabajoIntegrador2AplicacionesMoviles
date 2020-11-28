@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="REGISTRO DE USUARIOS"
+        android:text="@string/registroUsuariosTxt"
         android:textSize="25sp"
         android:textStyle="bold"
         android:layout_marginBottom="30dp"/>
@@ -55,7 +55,7 @@
         android:id="@+id/btnRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrar Usuario"
+        android:text="@string/registrarUsrBtn"
         android:layout_marginTop="30dp"
         android:onClick="onClick"/>
 

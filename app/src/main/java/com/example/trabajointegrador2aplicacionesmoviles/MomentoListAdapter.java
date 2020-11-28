@@ -47,6 +47,8 @@ public class MomentoListAdapter extends BaseAdapter {
     private class ViewHolder{
         ImageView imageView;
         TextView txtDescripcion;
+        TextView txtFechaEncuentroo;
+        TextView txtFechaPublicacion;
     }
 
     @Override
@@ -59,6 +61,8 @@ public class MomentoListAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(layout, null);
 
+            holder.txtFechaEncuentroo = (TextView) row.findViewById(R.id.txtFechaEncuentroo);
+            holder.txtFechaPublicacion = (TextView) row.findViewById(R.id.txtFechaPublicacion);
             holder.txtDescripcion = (TextView) row.findViewById(R.id.txtDescripcion);
             holder.imageView = (ImageView) row.findViewById(R.id.imgFood);
             row.setTag(holder);
@@ -70,7 +74,8 @@ public class MomentoListAdapter extends BaseAdapter {
         Momento momento = momentosList.get(position);
 
         holder.txtDescripcion.setText(momento.getDescripcion());
-
+        holder.txtFechaEncuentroo.setText("Fecha evento: "+momento.getFechaEncuentro());
+        holder.txtFechaPublicacion.setText(momento.getFecha());
 
         byte[] foodImage = momento.getImage();
         Bitmap bitmap = BitmapFactory.decodeByteArray(foodImage, 0, foodImage.length);

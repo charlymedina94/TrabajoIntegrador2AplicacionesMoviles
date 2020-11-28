@@ -26,13 +26,14 @@ public class MomentoDetail extends AppCompatActivity {
 
     int position = 0;
 
+
     ListView gridView;
     Momento list;
     MomentoListAdapter adapter = null;
 
     TextView descripcionn;
     TextView fechaa;
-    TextView ubicacionn;
+    //TextView ubicacionn;
 
     TextView universidadd;
     TextView urlEncuentroo;
@@ -55,7 +56,7 @@ public class MomentoDetail extends AppCompatActivity {
 
         descripcionn = (TextView) findViewById(R.id.txtDescripcionFragment);
         fechaa = (TextView) findViewById(R.id.txtFecha);
-        ubicacionn = (TextView) findViewById(R.id.txtUbicacion);
+        //ubicacionn = (TextView) findViewById(R.id.txtUbicacion);
         imgFragment = (ImageView) findViewById(R.id.imgFragment);
 
         universidadd = (TextView) findViewById(R.id.txtuniversidad);
@@ -70,9 +71,8 @@ public class MomentoDetail extends AppCompatActivity {
         position = intent.getExtras().getInt("Position");
 
 
-
         // get all data from sqlite
-        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");
+        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");       //ACA LE PASABA EL ID EN LA QUERY
             cursor.moveToPosition(position);
             int id = cursor.getInt(0);
             String descripcion = cursor.getString(1);
@@ -91,7 +91,7 @@ public class MomentoDetail extends AppCompatActivity {
 
             descripcionn.setText(descripcion);
             fechaa.setText(fecha);
-            ubicacionn.setText(ubicacion);
+            //ubicacionn.setText(ubicacion);
 
             universidadd.setText(universidad);
             urlEncuentroo.setText(urlEncuentro);
@@ -100,6 +100,9 @@ public class MomentoDetail extends AppCompatActivity {
             fechaEncuentroo.setText(fechaEncuentro);
             horaEncuentroo.setText(horaEncuentro);
             categoriaa.setText(categoria);
+
+
+
 
         //imgFragment.setImageBitmap(image);
             //new Momento(descripcion, image, id, fecha, ubicacion);

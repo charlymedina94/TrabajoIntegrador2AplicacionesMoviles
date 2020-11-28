@@ -7,9 +7,31 @@
     <string name="elegir_imagen">Escolha a imagem</string>
     <string name="descripcion">Descricao</string>
     <string name="lista_de_momentos">Lista de momentos</string>
-    <string name="Buscar">Busquediña</string>
-    <string name="opcion1">Opcao 1</string>
-    <string name="opcion2">Opcao 2</string>
-    <string name="opcion3">Universidades</string>
-    <string name="opcion4">Log Out</string>
+    <string name="Buscar">pesquisa</string>
+    <string name="opcion1">Adicionar Evento</string>
+    <string name="opcion2">Consultar Usuário</string>
+    <string name="opcion3">Universidade</string>
+    <string name="opcion4">Fechar Sessão</string>
+
+
+    <string name="actualizarBtn">Atualizar</string>
+    <string name="Universidad">Universidade</string>
+    <string name="link">Link para acessar:</string>
+    <string name="ubicacion">Local:</string>
+    <string name="aula">Sala de aula:</string>
+    <string name="fecha">Data:</string>
+    <string name="hora">Horário:</string>
+    <string name="categoria">Categoria:</string>
+    <string name="fechaBTN">Data</string>
+    <string name="horaBTN">Hora</string>
+    <string name="registroUsuariosTxt">REGISTRO DE USUÁRIOS</string>
+    <string name="registrarUsrBtn">Registrar usuário</string>
+    <string name="registrarUsrInicio">Registrar usuários</string>
+    <string name="ingresoInicio">Faça login</string>
+    <string name="buscarUsuario">Pesquisar</string>
+    <string name="actualizarUsuario">Atualizar</string>
+    <string name="eliminarUsuario">Excluir</string>
+
+
+
 </resources>

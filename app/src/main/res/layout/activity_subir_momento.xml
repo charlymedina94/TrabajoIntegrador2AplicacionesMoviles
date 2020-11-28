@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="Calendario" />
+                android:text="@string/fechaBTN" />
 
 
             <TextView
@@ -153,7 +153,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/buttonFechaEncuentro"
-                android:text="Elegir Fecha Encuentro..." />
+                android:hint="Elegir fecha..."
+                 />
 
         </LinearLayout>
 
@@ -167,7 +168,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hora"
+                android:text="@string/horaBTN"
                 android:id="@+id/buttonHoraEncuentro"
                 android:layout_below="@+id/bfecha"
                 android:layout_alignParentLeft="true"
@@ -182,7 +183,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:text="Elegir Hora Encuentro..." />
+                android:hint="Elegir hora..."
+                 />
 
 
 

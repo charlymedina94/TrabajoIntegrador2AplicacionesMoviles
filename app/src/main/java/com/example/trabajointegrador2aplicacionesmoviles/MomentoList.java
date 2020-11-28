@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -130,26 +131,23 @@ public class MomentoList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                //TextView v = (TextView) view.findViewById(R.id.txtDescripcion);
-                //Toast.makeText(getApplicationContext(), "seleccionado la descripcion: "+v.getText(),Toast.LENGTH_LONG).show();
-
                 Intent intent = new Intent(view.getContext(), MomentoDetail.class);
 
-                //int idposition = list.indexOf(position);
+                view.findViewById(R.id.txtDescripcion);
 
+                view.getTag();
 
-
-                //position = position +1;
-
-                //System.out.println(position+" POSICIOOOOOOOOOOOOOOOOOOOON");
-
+                //esto lo agregué probando
+                intent.putExtra("Id", id);
 
                 intent.putExtra("Position", position);
-                //intent.putExtra("Position", idposition);
 
                 startActivity(intent);
             }
         });
+
+
+
 
     }
 

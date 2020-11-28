@@ -7,8 +7,25 @@
     <string name="descripcion">Descripcion</string>
     <string name="lista_de_momentos">Lista de Momentos</string>
     <string name="Buscar">Buscar</string>
-    <string name="opcion1">Agregar momento</string>
+    <string name="opcion1">Agregar evento</string>
     <string name="opcion2">Consultar usuario</string>
     <string name="opcion3">Universidades</string>
     <string name="opcion4">Cerrar sesion</string>
+    <string name="actualizarBtn">Actualizar</string>
+    <string name="Universidad">Universidad</string>
+    <string name="link">Link para acceder:</string>
+    <string name="ubicacion">Ubicación:</string>
+    <string name="aula">Aula:</string>
+    <string name="fecha">Fecha:</string>
+    <string name="hora">Hora:</string>
+    <string name="categoria">Categoría:</string>
+    <string name="fechaBTN">Fecha</string>
+    <string name="horaBTN">Hora</string>
+    <string name="registroUsuariosTxt">REGISTRO DE USUARIOS</string>
+    <string name="registrarUsrBtn">Registrar Usuario</string>
+    <string name="registrarUsrInicio">Registrar Usuarios</string>
+    <string name="ingresoInicio">Ingresar</string>
+    <string name="buscarUsuario">Buscar</string>
+    <string name="actualizarUsuario">Actualizar</string>
+    <string name="eliminarUsuario">Eliminar</string>
 </resources>

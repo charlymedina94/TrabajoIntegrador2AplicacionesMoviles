@@ -44,14 +44,14 @@
                 android:layout_margin="5dp"
                 android:textSize="17sp" />
 
-
+<!--
             <TextView
                 android:id="@+id/txtUbicacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
                 android:layout_margin="5dp"/>
-
+-->
 
 
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:inputType="none"
-                android:text="Universidad:" />
+                android:text="@string/Universidad" />
 
             <TextView
                 android:id="@+id/txtuniversidad"
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:inputType="none"
-                android:text="Link para acceder:" />
+                android:text="@string/link" />
 
             <TextView
                 android:id="@+id/txturlEncuentro"
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:inputType="none"
-                android:text="Ubicación:" />
+                android:text="@string/ubicacion" />
 
             <TextView
                 android:id="@+id/txtlugar"
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:inputType="none"
-                android:text="Aula:" />
+                android:text="@string/aula" />
 
             <TextView
                 android:id="@+id/txtaula"
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:inputType="none"
-                android:text="Fecha:" />
+                android:text="@string/fecha" />
 
             <TextView
                 android:id="@+id/txtfechaEncuentro"
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:inputType="none"
-                android:text="Hora:" />
+                android:text="@string/hora" />
 
             <TextView
                 android:id="@+id/txthoraEncuentro"
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
                 android:inputType="none"
-                android:text="Categoría:" />
+                android:text="@string/categoria" />
 
             <TextView
                 android:id="@+id/txtcategoria"

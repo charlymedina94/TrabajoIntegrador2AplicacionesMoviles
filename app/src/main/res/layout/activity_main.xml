@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
                 android:layout_margin="10dp"
-                android:text="Ingresar" />
+                android:text="@string/ingresoInicio" />
 
 
             <Button
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:onClick="onClick"
-                android:text="Registrar Usuarios" />
+                android:text="@string/registrarUsrInicio" />
 
 
             <!--
