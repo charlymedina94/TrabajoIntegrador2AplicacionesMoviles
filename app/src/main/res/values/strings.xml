@@ -11,6 +11,7 @@
     <string name="opcion2">Consultar usuario</string>
     <string name="opcion3">Universidades</string>
     <string name="opcion4">Cerrar sesion</string>
+    <string name="opcion5">Cambiar idioma</string>
     <string name="actualizarBtn">Actualizar</string>
     <string name="Universidad">Universidad</string>
     <string name="link">Link para acceder:</string>
@@ -29,6 +30,19 @@
     <string name="actualizarUsuario">Actualizar</string>
     <string name="eliminarUsuario">Eliminar</string>
 
+
+
+
+    <string name="str_en" >Ingles</string>
+    <string name="str_es" >Español</string>
+    <string name="str_pt">Portugues</string>
+
+    <string-array name="languages" >
+        <item>@string/str_es</item>
+        <item>@string/str_en</item>
+        <item>@string/str_pt</item>
+    </string-array>
+
     <string-array name="comboCategorias">
         <item>Curso</item>
         <item>Webinar</item>
@@ -38,4 +52,5 @@
 
 
     </string-array>
+
 </resources>
