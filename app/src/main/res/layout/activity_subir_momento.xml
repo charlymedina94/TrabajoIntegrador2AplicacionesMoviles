@@ -22,10 +22,10 @@
     >
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:layout_margin="10dp"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/picture" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,8 +70,8 @@
 
     <EditText
         android:id="@+id/edtDescripcion"
-        android:layout_width="394dp"
-        android:layout_height="82dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:gravity="top"
@@ -84,8 +84,8 @@
 
     <EditText
         android:id="@+id/universidad"
-        android:layout_width="394dp"
-        android:layout_height="82dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:gravity="top"
@@ -96,8 +96,8 @@
 
     <EditText
         android:id="@+id/urlEncuentro"
-        android:layout_width="394dp"
-        android:layout_height="82dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:gravity="top"
@@ -108,8 +108,8 @@
 
     <EditText
         android:id="@+id/lugar"
-        android:layout_width="394dp"
-        android:layout_height="82dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:gravity="top"
@@ -120,8 +120,8 @@
 
     <EditText
         android:id="@+id/aula"
-        android:layout_width="394dp"
-        android:layout_height="82dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:gravity="top"
@@ -190,17 +190,35 @@
 
         </LinearLayout>
 
-    <EditText
-        android:id="@+id/categoria"
-        android:layout_width="394dp"
-        android:layout_height="82dp"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:gravity="top"
-        android:hint="Categoria"
-        android:inputType="text">
 
-    </EditText>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/categoria"
+                    android:layout_width="114dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="15"
+                    android:gravity="top"
+                    android:hint="Categoria"
+                    android:inputType="text"
+                    android:textSize="20dp" />
+                <Spinner
+                    android:id="@+id/spinnerCat"
+                    android:layout_width="61dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:scrollbarSize="10dp"
+                    android:soundEffectsEnabled="true"
+                    android:spinnerMode="dropdown"
+                    android:splitMotionEvents="true" />
+
+
+            </LinearLayout>
+
 
         </LinearLayout>
 

@@ -23,10 +23,13 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -62,7 +65,8 @@ public class SubirMomentoActivity extends AppCompatActivity {
     EditText aula;
     TextView fechaEncuentro;
     TextView horaEncuentro;
-    EditText categoria;
+    TextView categoria;
+    Spinner comboCategorias;
 
     final int REQUEST_CODE_GALLERY = 999;
     final int REQUEST_CODE_FOTO = 998;
@@ -84,6 +88,7 @@ public class SubirMomentoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subir_momento);
+
 
 
 
@@ -195,7 +200,7 @@ public class SubirMomentoActivity extends AppCompatActivity {
                     horaEncuentro.setText("Elegir Hora Encuentro...");
                     categoria.setText("");
 
-                    imageView.setImageResource(R.drawable.icono_background);
+                    imageView.setImageResource(R.drawable.picture);
 
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "No se pudo subir el momento!", Toast.LENGTH_SHORT).show();
@@ -479,7 +484,29 @@ public class SubirMomentoActivity extends AppCompatActivity {
         aula  = (EditText) findViewById(R.id.aula);
         fechaEncuentro  = (TextView) findViewById(R.id.fechaEncuentro);
         horaEncuentro  = (TextView) findViewById(R.id.horaEncuentro);
-        categoria  = (EditText) findViewById(R.id.categoria);
+        categoria  = (TextView) findViewById(R.id.categoria);
+        comboCategorias = (Spinner) findViewById(R.id.spinnerCat);
+
+        ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.comboCategorias, android.R.layout.simple_spinner_item);
+
+        comboCategorias.setAdapter(adapter);
+        comboCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position!=0) {
+                    categoria.setText(parent.getItemAtPosition(position).toString());
+                }else{
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 }

@@ -28,4 +28,14 @@
     <string name="buscarUsuario">Buscar</string>
     <string name="actualizarUsuario">Actualizar</string>
     <string name="eliminarUsuario">Eliminar</string>
+
+    <string-array name="comboCategorias">
+        <item>Curso</item>
+        <item>Webinar</item>
+        <item>Muestra</item>
+        <item>Discursos</item>
+        <item>Presentacion</item>
+
+
+    </string-array>
 </resources>
