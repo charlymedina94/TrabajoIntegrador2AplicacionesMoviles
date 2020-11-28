@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="inicio_sesion">Conecte-se</string>
     <string name="title_item_detail">Detalhe do item</string>
     <string name="agregar">Adicionar</string>
@@ -12,8 +11,6 @@
     <string name="opcion2">Consultar Usuário</string>
     <string name="opcion3">Universidade</string>
     <string name="opcion4">Fechar Sessão</string>
-
-
     <string name="actualizarBtn">Atualizar</string>
     <string name="Universidad">Universidade</string>
     <string name="link">Link para acessar:</string>
@@ -31,7 +28,8 @@
     <string name="buscarUsuario">Pesquisar</string>
     <string name="actualizarUsuario">Atualizar</string>
     <string name="eliminarUsuario">Excluir</string>
-
-
-
+    <string name="opcion5">Mudar Idioma</string>
+    <string name="str_en">Inglês</string>
+    <string name="str_es">espanhol</string>
+    <string name="str_pt">"português "</string>
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="inicio_sesion">Login</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="agregar">Add</string>
@@ -29,6 +28,8 @@
     <string name="buscarUsuario">Search</string>
     <string name="actualizarUsuario">Update</string>
     <string name="eliminarUsuario">Delete</string>
-
-
+    <string name="opcion5">Change Language</string>
+    <string name="str_en">English</string>
+    <string name="str_es">Spanish</string>
+    <string name="str_pt">Portuguese</string>
 </resources>

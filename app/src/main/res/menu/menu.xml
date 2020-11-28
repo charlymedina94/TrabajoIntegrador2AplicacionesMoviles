@@ -13,6 +13,10 @@
         android:title="@string/opcion3" />
 
     <item
+        android:id="@+id/opcion5"
+        android:title="@string/opcion5" />
+
+    <item
         android:id="@+id/opcion4"
         android:title="@string/opcion4" />
 

@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,6 +37,7 @@ import com.example.trabajointegrador2aplicacionesmoviles.entidades.Momento;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import static com.example.trabajointegrador2aplicacionesmoviles.MomentoDetail.getImageFromBLOB;
 
@@ -48,6 +50,8 @@ public class MomentoList extends AppCompatActivity {
     int cont=0;
     ImageView imgFragment;
     ImageView asd;
+    Locale locale;
+    Configuration config = new Configuration();
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -252,6 +256,46 @@ public class MomentoList extends AppCompatActivity {
             Intent miIntent;
             miIntent=new Intent(MomentoList.this,MainActivity.class);
             startActivity(miIntent);
+        }
+
+        if(id == R.id.opcion5){
+
+
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
+            b.setTitle(getResources().getString(R.string.opcion5));
+            //obtiene los idiomas del array de string.xml
+            String[] types = getResources().getStringArray(R.array.languages);
+            b.setItems(types, new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    dialog.dismiss();
+                    switch(which){
+                        case 0:
+                            locale = new Locale("es");
+                            config.locale =locale;
+                            break;
+                        case 1:
+                            locale = new Locale("en");
+                            config.locale =locale;
+                            break;
+                        case 2:
+                            locale = new Locale("pt");
+                            config.locale =locale;
+                            break;
+                    }
+                    getResources().updateConfiguration(config, null);
+                    finish();
+                    startActivity(getIntent());
+
+                }
+
+            });
+
+            b.show();
+
+
         }
 
         return super.onOptionsItemSelected(item);
