@@ -72,8 +72,6 @@ public class MomentoList extends AppCompatActivity {
             String horaEncuentro=cursor.getString(10);
             String categoria=cursor.getString(11);
 
-
-
             list.add(new Momento(descripcion, image, id,fecha,ubicacion, universidad, urlEncuentro, lugar, aula, fechaEncuentro, horaEncuentro, categoria));
         }
 
@@ -91,9 +89,6 @@ public class MomentoList extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int item) {
                         if (item == 0) {
                             // update
-
-
-
                             Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM MOMENTO");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
@@ -137,21 +132,12 @@ public class MomentoList extends AppCompatActivity {
 
                 view.getTag();
 
-                //esto lo agregué probando
-                intent.putExtra("Id", id);
-
                 intent.putExtra("Position", position);
 
                 startActivity(intent);
             }
         });
-
-
-
-
     }
-
-
 
 
     //  ############################################# BUSCAR POR CATEGORIA ################################
@@ -163,8 +149,6 @@ public class MomentoList extends AppCompatActivity {
         MenuItem searchViewItem = menu.findItem(R.id.app_bar_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchViewItem);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-
 
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -233,11 +217,9 @@ public class MomentoList extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.opcion1){
-            //Toast.makeText(this,"Opcion 1", Toast.LENGTH_SHORT).show();
             Intent miIntent;
             miIntent=new Intent(MomentoList.this,SubirMomentoActivity.class);
             startActivity(miIntent);
-            //return true;
         }
 
         if(id == R.id.opcion2){
@@ -263,40 +245,22 @@ public class MomentoList extends AppCompatActivity {
     }
 
 
-
-
-    //ImageView imageViewFood;
     private void showDialogUpdate(Activity activity, int position){
 
         final Dialog dialog = new Dialog(activity);
         dialog.setContentView(R.layout.update_momento_activity);
         dialog.setTitle("Update");
 
-        //imageViewFood = (ImageView) dialog.findViewById(R.id.imageViewFood);
         EditText edtDescripcion = (EditText) dialog.findViewById(R.id.edtDescripcion);
         Button btnUpdate = (Button) dialog.findViewById(R.id.btnUpdate);
 
-        // set width for dialog
+
         int width = (int) (activity.getResources().getDisplayMetrics().widthPixels * 0.95);
-        // set height for dialog
         int height = (int) (activity.getResources().getDisplayMetrics().heightPixels * 0.7);
         dialog.getWindow().setLayout(width, height);
         dialog.show();
 
-        /*
-        imageViewFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // request photo library
-                ActivityCompat.requestPermissions(
-                        MomentoList.this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        888
-                );
-            }
-        });
 
-         */
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override

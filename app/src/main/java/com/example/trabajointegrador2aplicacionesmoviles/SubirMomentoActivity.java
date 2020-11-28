@@ -50,7 +50,7 @@ import java.util.Date;
 public class SubirMomentoActivity extends AppCompatActivity {
 
     EditText edtDescripcion;
-    Button btnChoose, btnAdd, btnList;
+    Button btnChoose, btnAdd;
     ImageView imageView;
     private final String CARPETA_RAIZ = "misImagenes/";
     private final String RUTA_IMAGEN = CARPETA_RAIZ + "misFotos";
@@ -92,12 +92,10 @@ public class SubirMomentoActivity extends AppCompatActivity {
 
         sqLiteHelper = new ConexionSQLiteHelper(this, "MomentoDB.sqlite", null, 1);
 
-       //sqLiteHelper.queryData("DROP TABLE IF EXISTS MOMENTO");
         sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR ,universidad VARCHAR, urlEncuentro VARCHAR, lugar VARCHAR, aula VARCHAR, fechaEncuentro VARCHAR, horaEncuentro VARCHAR, categoria VARCHAR)");
 
-        //......................................................................................
+        //ubicacion por coordenadas
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        //......................................................................................
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,17 +120,9 @@ public class SubirMomentoActivity extends AppCompatActivity {
                     DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy hh:mm a");
                     String fecha = dateFormat.format(date);
                     String ubicacion = "";
-                    /*
-                    String universidad = "Unaj";
-                    String urlEncuentro;
-                    String lugar;
-                    String aula;
-                    String fechaEncuentro;
-                    String horaEncuentro;
-                    String categoria;
-                    */
 
-                    //..................................  UBICACION ....................................................
+
+                    ////ubicacion por coordenadas
 
                     flag = displayGpsStatus();
                     if (flag) {
@@ -263,19 +253,6 @@ public class SubirMomentoActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-/*
-        btnList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SubirMomentoActivity.this, MomentoList.class);
-                startActivity(intent);
-            }
-        });
-
- */
     }
 
     //......................................................................................
@@ -294,7 +271,7 @@ public class SubirMomentoActivity extends AppCompatActivity {
     }
 
 
-    //FECHA
+    //FECHA EVENTO
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
@@ -350,17 +327,11 @@ public class SubirMomentoActivity extends AppCompatActivity {
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
 
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
 
             } else {
-                // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
                         new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION);
@@ -370,14 +341,6 @@ public class SubirMomentoActivity extends AppCompatActivity {
             return true;
         }
     }
-
-
-
-
-
-
-
-
 
 
 
@@ -488,20 +451,6 @@ public class SubirMomentoActivity extends AppCompatActivity {
 
         }
 
-//        if(requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null){
-//            Uri uri = data.getData();
-//
-//            try {
-//                InputStream inputStream = getContentResolver().openInputStream(uri);
-//
-//                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-//                imageView.setImageBitmap(bitmap);
-//
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }
-//        }
-
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -523,7 +472,6 @@ public class SubirMomentoActivity extends AppCompatActivity {
         edtDescripcion = (EditText) findViewById(R.id.edtDescripcion);
         btnChoose = (Button) findViewById(R.id.btnChoose);
         btnAdd = (Button) findViewById(R.id.btnAdd);
-        //btnList = (Button) findViewById(R.id.btnList);
         imageView = (ImageView) findViewById(R.id.imageView);
         universidad = (EditText) findViewById(R.id.universidad);
         urlEncuentro = (EditText) findViewById(R.id.urlEncuentro);

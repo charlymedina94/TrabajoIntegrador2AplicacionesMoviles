@@ -65,35 +65,7 @@
                 android:text="@string/registrarUsrInicio" />
 
 
-            <!--
 
-            <Button
-                android:id="@+id/btnConsultaIndividual"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onClick"
-                android:layout_margin="10dp"
-                android:text="Consultar Usuario" />
-
-
-            <Button
-                android:id="@+id/btnSubirMomento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Subir momento"
-                android:layout_margin="10dp"
-                android:onClick="onClick"/>
-
-
-            <Button
-                android:id="@+id/btnBuscarTag"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Buscar tag"
-                android:layout_margin="10dp"
-                android:onClick="onClick"/>
-
--->
 
         </LinearLayout>
 

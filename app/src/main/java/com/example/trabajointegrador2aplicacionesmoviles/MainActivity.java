@@ -18,10 +18,8 @@ import com.example.trabajointegrador2aplicacionesmoviles.ConexionSQLiteHelper;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    EditText e1, e2, e3;
-    Button b1, b2;
-
-//    ConexionSQLiteHelper db;
+    EditText e1, e2;
+    Button b1;
 
     public static ConexionSQLiteHelper sqLiteHelper;
 
@@ -33,13 +31,10 @@ public class MainActivity extends AppCompatActivity {
         e2=(EditText)findViewById(R.id.campoPassword2);
         b1=(Button) findViewById(R.id.btnLogin);
 
-
-
         cargarPreferencias();
 
         ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
         sqLiteHelper = new ConexionSQLiteHelper(this, "MomentoDB.sqlite", null, 1);
-        //sqLiteHelper.queryData("DROP TABLE IF EXISTS MOMENTO");
         sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS MOMENTO(Id INTEGER PRIMARY KEY AUTOINCREMENT, descripcion VARCHAR, image BLOB, fecha VARCHAR, ubicacion VARCHAR,universidad VARCHAR, urlEncuentro VARCHAR, lugar VARCHAR, aula VARCHAR, fechaEncuentro VARCHAR, horaEncuentro VARCHAR, categoria VARCHAR)");
 
         b1.setOnClickListener(new View.OnClickListener() {
@@ -49,16 +44,9 @@ public class MainActivity extends AppCompatActivity {
                 String pass=e2.getText().toString();
                 Boolean chkdnipassword= conn.dniPassword(dni,pass);
                 if (chkdnipassword==true){
-                    //Toast.makeText(getApplicationContext(),"Logueo exitoso",Toast.LENGTH_SHORT).show();
                     guardarPreferencias();
-
-
-
-                            Intent intent = new Intent(MainActivity.this, MomentoList.class);
-                            startActivity(intent);
-
-
-
+                    Intent intent = new Intent(MainActivity.this, MomentoList.class);
+                    startActivity(intent);
                 }else {
                     Toast.makeText(getApplicationContext(),"DNI y/o Contraseña incorrectos",Toast.LENGTH_SHORT).show();
                 }
@@ -75,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         e1.setText(user);
         e2.setText(pass);
 
-
     }
 
     private void guardarPreferencias() {
@@ -91,51 +78,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClick(View v) {
-
-
-
         Intent miIntent=null;
         switch (v.getId()){
             case R.id.btnOpcionRegistro:
                 miIntent=new Intent(MainActivity.this,RegistroUsuariosActivity.class);
                 break;
-
-
-
-/*
-
-            case R.id.btnConsultaIndividual:
-                miIntent=new Intent(MainActivity.this,ConsultarUsuariosActivity.class);
-                break;
-
-
-
-            case R.id.btnSubirMomento:
-                miIntent=new Intent(MainActivity.this,SubirMomentoActivity.class);
-                break;
-
-            case R.id.btnBuscarTag:
-                miIntent=new Intent(MainActivity.this, BuscarTagActivity.class);
-                break;
-
-*/
-                /*
-
-                case R.id.btnConsultaSpinner:
-                miIntent=new Intent(MainActivity.this,ConsultaComboActivity.class);
-                break;
-            case R.id.btnConsultaLista:
-                miIntent=new Intent(MainActivity.this,ConsultarListaListViewActivity.class);
-                break;
-            case R.id.btnConsultaListaMascota:
-                miIntent=new Intent(MainActivity.this,ListaMascotasActivity.class);
-                break;
-            case R.id.btnConsultaListaPersonasRecycler:
-                miIntent=new Intent(MainActivity.this,ListaPersonasRecycler.class);
-                break;
-
-
-                 */
         }
         if (miIntent!=null){
             startActivity(miIntent);

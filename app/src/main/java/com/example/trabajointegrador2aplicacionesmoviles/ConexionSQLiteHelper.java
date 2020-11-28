@@ -51,13 +51,6 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         database.execSQL(sql);
     }
 
-//    @Override
-//    public void onUpgrade( SQLiteDatabase database, int versionAntigua, int versionNueva) {
-//        database.execSQL("DROP TABLE IF EXISTS MOMENTO");
-//        onCreate(database);
-//
-//    }
-
 
 
     public void insertData(String descripcion, byte[] image, String fecha, String ubicacion, String universidad,
@@ -119,19 +112,4 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         return database.rawQuery(sql, null);
     }
 
-
 }
-
-
-//    public Cursor ConsultarUsuPas(String usu, String pas) throws SQLException{
-//        Cursor mcursor=null;
-//
-//        mcursor=this.getReadableDatabase().query(Utilidades.TABLA_USUARIO,
-//                new String[]{Utilidades.CAMPO_ID,Utilidades.CAMPO_PASSWORD,Utilidades.CAMPO_NOMBRE,Utilidades.CAMPO_CORREO};
-//
-//
-//        return mcursor;
-//    }
-//}
-
-

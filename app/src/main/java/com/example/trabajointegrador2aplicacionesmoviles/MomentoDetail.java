@@ -26,15 +26,8 @@ public class MomentoDetail extends AppCompatActivity {
 
     int position = 0;
 
-
-    ListView gridView;
-    Momento list;
-    MomentoListAdapter adapter = null;
-
     TextView descripcionn;
     TextView fechaa;
-    //TextView ubicacionn;
-
     TextView universidadd;
     TextView urlEncuentroo;
     TextView lugarr;
@@ -42,12 +35,9 @@ public class MomentoDetail extends AppCompatActivity {
     TextView fechaEncuentroo;
     TextView horaEncuentroo;
     TextView categoriaa;
-
-
-
     ImageView imgFragment;
-    public static ConexionSQLiteHelper sqLiteHelper;
 
+    public static ConexionSQLiteHelper sqLiteHelper;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +46,7 @@ public class MomentoDetail extends AppCompatActivity {
 
         descripcionn = (TextView) findViewById(R.id.txtDescripcionFragment);
         fechaa = (TextView) findViewById(R.id.txtFecha);
-        //ubicacionn = (TextView) findViewById(R.id.txtUbicacion);
         imgFragment = (ImageView) findViewById(R.id.imgFragment);
-
         universidadd = (TextView) findViewById(R.id.txtuniversidad);
         urlEncuentroo = (TextView) findViewById(R.id.txturlEncuentro);
         lugarr = (TextView) findViewById(R.id.txtlugar);
@@ -72,14 +60,12 @@ public class MomentoDetail extends AppCompatActivity {
 
 
         // get all data from sqlite
-        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");       //ACA LE PASABA EL ID EN LA QUERY
+        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO");
             cursor.moveToPosition(position);
             int id = cursor.getInt(0);
             String descripcion = cursor.getString(1);
-//            byte[] image = cursor.getBlob(2);
             imgFragment.setImageBitmap(getImageFromBLOB(cursor.getBlob(cursor.getColumnIndex("image"))));;
             String fecha = cursor.getString(3);
-            String ubicacion = cursor.getString(4);
             String universidad = cursor.getString(5);
             String urlEncuentro = cursor.getString(6);
             String lugar = cursor.getString(7);
@@ -91,8 +77,6 @@ public class MomentoDetail extends AppCompatActivity {
 
             descripcionn.setText(descripcion);
             fechaa.setText(fecha);
-            //ubicacionn.setText(ubicacion);
-
             universidadd.setText(universidad);
             urlEncuentroo.setText(urlEncuentro);
             lugarr.setText(lugar);
@@ -100,15 +84,6 @@ public class MomentoDetail extends AppCompatActivity {
             fechaEncuentroo.setText(fechaEncuentro);
             horaEncuentroo.setText(horaEncuentro);
             categoriaa.setText(categoria);
-
-
-
-
-        //imgFragment.setImageBitmap(image);
-            //new Momento(descripcion, image, id, fecha, ubicacion);
-
-
-
         }
 
     public static Bitmap getImageFromBLOB(byte[] mBlob)
@@ -142,7 +117,7 @@ public class MomentoDetail extends AppCompatActivity {
             try {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                //imageViewFood.setImageBitmap(bitmap);
+
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

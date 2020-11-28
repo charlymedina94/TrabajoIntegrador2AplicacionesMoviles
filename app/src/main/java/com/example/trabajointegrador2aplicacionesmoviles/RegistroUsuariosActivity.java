@@ -42,45 +42,15 @@ public class RegistroUsuariosActivity extends AppCompatActivity {
         } else {
             if(s2.equals(s5)){
                 if (!s4.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(s4).matches()) {
-    //                Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                     registrarUsuarios();
                 } else {
                     Toast.makeText(this,"Email invalido",Toast.LENGTH_SHORT).show();
-    //              validateEmailAddress(campoCorreo);
-                    //registrarUsuariosSql();
                 }
         }else {
                 Toast.makeText(this,"Las contraseñas no coinciden",Toast.LENGTH_SHORT).show();
             }
             }
         }
-//
-//    private boolean validateEmailAddress(EditText campoCorreo) {
-//        String s4= campoCorreo.getText().toString();
-//
-//        if(!s4.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(s4).matches()){
-//            Toast.makeText(this,"Email validado",Toast.LENGTH_SHORT).show();
-//            return true;
-//        }else {
-//            Toast.makeText(this,"Email invalido",Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
-//    }
-
-    /* ### REGISTRO DE USUARIOS POR QUERY
-    private void registrarUsuariosSql() {
-        ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
-        SQLiteDatabase db=conn.getWritableDatabase();
-        //insert into usuario (id,nombre,telefono) values (123,'Cristian','85665223')
-        String insert="INSERT INTO "+ Utilidades.TABLA_USUARIO
-                +" ( " +Utilidades.CAMPO_ID+","+Utilidades.CAMPO_NOMBRE+","+Utilidades.CAMPO_TELEFONO+")" +
-                " VALUES ("+campoId.getText().toString()+", '"+campoNombre.getText().toString()+"','"
-                +campoTelefono.getText().toString()+"')";
-        db.execSQL(insert);
-        db.close();
-    }
-     */
-
 
         private void registrarUsuarios(){
 

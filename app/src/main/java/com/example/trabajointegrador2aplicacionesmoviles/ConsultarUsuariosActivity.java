@@ -76,7 +76,6 @@ public class ConsultarUsuariosActivity extends AppCompatActivity {
         String[] parametros={campoId.getText().toString()};
 
         try {
-            //select nombre,telefono from usuario where codigo=?
             Cursor cursor=db.rawQuery("SELECT "+Utilidades.CAMPO_NOMBRE+","+Utilidades.CAMPO_CORREO+
                     " FROM "+Utilidades.TABLA_USUARIO+" WHERE "+Utilidades.CAMPO_ID+"=? ",parametros);
 

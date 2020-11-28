@@ -207,16 +207,5 @@
     </ScrollView>
 
 
-    <!--
-
-    <Button
-        android:id="@+id/btnList"
-        android:text="@string/lista_de_momentos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        />
-
-        -->
 
 </LinearLayout>
