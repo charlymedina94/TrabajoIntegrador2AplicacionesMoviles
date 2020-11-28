@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -36,6 +37,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import static com.example.trabajointegrador2aplicacionesmoviles.MomentoDetail.getImageFromBLOB;
+
 
 public class MomentoList extends AppCompatActivity {
 
@@ -43,6 +46,8 @@ public class MomentoList extends AppCompatActivity {
     ArrayList<Momento> list;
     MomentoListAdapter adapter = null;
     int cont=0;
+    ImageView imgFragment;
+    ImageView asd;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +115,15 @@ public class MomentoList extends AppCompatActivity {
                         else if(item == 2) {
 
                             Toast.makeText(getApplicationContext(), "Se muestra mensaje, pero no esta hecha la funcionalidad para guardar",Toast.LENGTH_SHORT).show();
+
+                            // GUARDAR IMAGEN SD
+                            Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM MOMENTO");
+                            ArrayList<Integer> arrID = new ArrayList<Integer>();
+                            while (c.moveToNext()){
+                                arrID.add(c.getInt(0));
+                            }
+                            // show dialog update at here
+                            guardarImagenSD(arrID.get(position));
 
                         }
 
@@ -306,6 +320,22 @@ public class MomentoList extends AppCompatActivity {
             }
         });
         dialogDelete.show();
+    }
+
+
+    private void guardarImagenSD(int position){
+
+        // get all data from sqlite
+        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO WHERE Id="+position);
+        cursor.moveToPosition(position);
+
+        //aca es donde obtiene la imagen. capaz hay que adaptarlo o ponerlo de otra forma
+        imgFragment.setImageBitmap(getImageFromBLOB(cursor.getBlob(cursor.getColumnIndex("image"))));;
+
+        //codigo para insertar en sd
+        //...
+
+
     }
 
 
