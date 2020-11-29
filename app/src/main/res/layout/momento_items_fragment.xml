@@ -26,7 +26,7 @@
                 android:id="@+id/txtFecha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
+                android:layout_margin="5dp"
                 android:textSize="17sp" />
 
             <ImageView
@@ -42,14 +42,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:textSize="17sp" />
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/darker_gray"/>
 
 
             <TextView
                 android:id="@+id/nombreUniversidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
                 android:inputType="none"
                 android:text="@string/Universidad" />
 
@@ -64,7 +72,9 @@
                 android:id="@+id/nombreUrlEncuentro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
                 android:inputType="none"
                 android:text="@string/link" />
 
@@ -80,7 +90,9 @@
                 android:id="@+id/nombreLugar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
                 android:inputType="none"
                 android:text="@string/ubicacion" />
 
@@ -95,7 +107,9 @@
                 android:id="@+id/nombreAula"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
                 android:inputType="none"
                 android:text="@string/aula" />
 
@@ -110,7 +124,9 @@
                 android:id="@+id/nombrefechaEncuentro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
                 android:inputType="none"
                 android:text="@string/fecha" />
 
@@ -125,7 +141,9 @@
                 android:id="@+id/nombrehoraEncuentro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
                 android:inputType="none"
                 android:text="@string/hora" />
 
@@ -140,7 +158,9 @@
                 android:id="@+id/nombreCategoria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
                 android:inputType="none"
                 android:text="@string/categoria" />
 

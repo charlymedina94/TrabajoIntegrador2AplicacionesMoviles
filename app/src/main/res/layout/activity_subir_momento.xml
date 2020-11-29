@@ -206,9 +206,10 @@
                     android:hint="Categoria"
                     android:inputType="text"
                     android:textSize="20dp" />
+
                 <Spinner
                     android:id="@+id/spinnerCat"
-                    android:layout_width="61dp"
+                    android:layout_width="68dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:scrollbarSize="10dp"
