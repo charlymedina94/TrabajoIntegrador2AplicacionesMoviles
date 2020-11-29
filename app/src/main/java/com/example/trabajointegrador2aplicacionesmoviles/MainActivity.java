@@ -1,20 +1,13 @@
 package com.example.trabajointegrador2aplicacionesmoviles;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.example.trabajointegrador2aplicacionesmoviles.ConexionSQLiteHelper;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         e1=(EditText)findViewById(R.id.campoId2);
         e2=(EditText)findViewById(R.id.campoPassword2);
         b1=(Button) findViewById(R.id.btnLogin);
+        String rol =null;
 
         cargarPreferencias();
 
@@ -45,11 +39,37 @@ public class MainActivity extends AppCompatActivity {
                 Boolean chkdnipassword= conn.dniPassword(dni,pass);
                 if (chkdnipassword==true){
                     guardarPreferencias();
-                    Intent intent = new Intent(MainActivity.this, MomentoList.class);
-                    startActivity(intent);
-                }else {
-                    Toast.makeText(getApplicationContext(),"DNI y/o Contraseña incorrectos",Toast.LENGTH_SHORT).show();
+                    String rol = conn.checkRol(dni,pass);
+
+                    //ir a estudiante
+                    if (rol.equals("Estudiante")){
+                        Intent intent = new Intent(MainActivity.this, UserMomentoList.class);
+                        startActivity(intent);
+
+                    }
+                    //ir a Administrativo
+                    else if (rol.equals("Administrativo")) {
+
+                        Intent intent = new Intent(MainActivity.this, MomentoList.class);
+                        startActivity(intent);
+
+                    }
+
                 }
+
+
+
+//                    Boolean chkAdmin =conn.chequeoAdmin(dni);
+//                    if (chkAdmin==true){
+//
+//                        Intent intent = new Intent(MainActivity.this, MomentoList.class);
+//                        startActivity(intent);
+//
+//                    }else {
+//                        Toast.makeText(getApplicationContext(),"algo fallo",Toast.LENGTH_SHORT).show();
+//                    }
+
+
 
             }
         });

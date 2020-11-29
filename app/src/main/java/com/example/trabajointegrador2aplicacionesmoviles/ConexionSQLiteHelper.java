@@ -2,13 +2,10 @@ package com.example.trabajointegrador2aplicacionesmoviles;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.CursorIndexOutOfBoundsException;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
-import com.example.trabajointegrador2aplicacionesmoviles.entidades.Momento;
 import com.example.trabajointegrador2aplicacionesmoviles.utilidades.Utilidades;
 
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {

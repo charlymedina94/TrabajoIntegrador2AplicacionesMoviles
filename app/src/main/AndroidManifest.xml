@@ -30,9 +30,7 @@
         <activity android:name=".ConsultarUsuariosActivity" />
         <activity android:name=".SubirMomentoActivity" />
         <activity android:name=".MomentoList" />
-        <activity android:name=".tag.BuscarTagActivity" />
-        <activity android:name=".tag.TagList" />
-        <activity android:name=".MostrarFeedActivity" />
+        <activity android:name=".UserMomentoList" />
         <activity android:name=".MomentoDetail" />
         <activity android:name=".ItemListActivity" />
         <activity android:name=".ItemDetailActivity" />
