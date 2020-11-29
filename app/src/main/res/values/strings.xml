@@ -54,4 +54,13 @@
 
     </string-array>
 
+    <string-array name="comboRoles">
+        <item>Seleccione funcion</item>
+        <item>Estudiante</item>
+        <item>Administrativo</item>
+
+
+    </string-array>
+
+
 </resources>

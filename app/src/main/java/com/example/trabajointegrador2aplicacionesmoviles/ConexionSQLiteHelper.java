@@ -44,9 +44,9 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase db =this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from usuario where id=? and password=?", new String[]{dni,password});
         if(cursor.getCount()>0){
-        while (cursor.moveToNext()) {
-            rol=cursor.getString(3);
-        }
+            while (cursor.moveToNext()) {
+                rol=cursor.getString(4);
+            }
         }
         return rol;
     }
