@@ -32,4 +32,14 @@
     <string name="str_en">Inglês</string>
     <string name="str_es">espanhol</string>
     <string name="str_pt">"português "</string>
+
+    <string-array name="comboCategorias">
+        <item> Escolha ... </item>
+        <item> Curso </item>
+        <item> Webinar </item>
+        <item> Amostra </item>
+        <item> Discursos </item>
+        <item> Apresentação </item>
+    </string-array>
+
 </resources>

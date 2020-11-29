@@ -39,6 +39,18 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         else return false;
     }
 
+    public String checkRol (String dni, String password){
+        String rol = "";
+        SQLiteDatabase db =this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from usuario where id=? and password=?", new String[]{dni,password});
+        if(cursor.getCount()>0){
+        while (cursor.moveToNext()) {
+            rol=cursor.getString(3);
+        }
+        }
+        return rol;
+    }
+
 
 
     //########### AGREGO MOMENTOS
