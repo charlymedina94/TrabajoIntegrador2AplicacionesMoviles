@@ -1,5 +1,6 @@
 package com.example.trabajointegrador2aplicacionesmoviles;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,12 +12,12 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -24,16 +25,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.MenuItemCompat;
 
 import com.example.trabajointegrador2aplicacionesmoviles.entidades.Momento;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOError;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Locale;
-
-import static com.example.trabajointegrador2aplicacionesmoviles.MomentoDetail.getImageFromBLOB;
+import java.util.Random;
 
 
 public class UserMomentoList extends AppCompatActivity {
@@ -42,9 +48,10 @@ public class UserMomentoList extends AppCompatActivity {
     ArrayList<Momento> list;
     MomentoListAdapter adapter = null;
     int cont = 0;
-    ImageView imgFragment;
+    Bitmap imgFragment;
     Locale locale;
     Configuration config = new Configuration();
+    final int REQUEST_CODE_WRITE=150;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,19 +94,26 @@ public class UserMomentoList extends AppCompatActivity {
                 dialog.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int item) {
-                        if (item == 0) {
 
-                            Toast.makeText(getApplicationContext(), "Se muestra mensaje, pero no esta hecha la funcionalidad para guardar", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Se ha guardado la imagen",Toast.LENGTH_SHORT).show();
 
-                            // GUARDAR IMAGEN SD
-                            Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM MOMENTO");
-                            ArrayList<Integer> arrID = new ArrayList<Integer>();
-                            while (c.moveToNext()) {
-                                arrID.add(c.getInt(0));
-                            }
-                            // show dialog update at here
+                        // GUARDAR IMAGEN SD
+                        Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM MOMENTO");
+                        ArrayList<Integer> arrID = new ArrayList<Integer>();
+                        while (c.moveToNext()){
+                            arrID.add(c.getInt(0));
+                        }
+                        // show dialog update at here
+                        try {
+                            ActivityCompat.requestPermissions(
+                                    UserMomentoList.this,
+                                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                    REQUEST_CODE_WRITE);
+                            checkWritePermission();
                             guardarImagenSD(arrID.get(position));
 
+                        } catch (IOError r) {
+                            r.printStackTrace();
                         }
 
                     }
@@ -126,8 +140,26 @@ public class UserMomentoList extends AppCompatActivity {
             }
         });
     }
+    public static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 150;
+    public boolean checkWritePermission() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 
 
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
     //  ############################################# BUSCAR POR CATEGORIA ################################
 
     @Override
@@ -258,23 +290,64 @@ public class UserMomentoList extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
-
+    public static Bitmap convertCompressedByteArrayToBitmap(byte[] src){
+        return BitmapFactory.decodeByteArray(src, 0, src.length);
+    }
 
 
 
     private void guardarImagenSD(int position) {
 
+        System.out.println(position+"--------------------------------");
+
         // get all data from sqlite
-        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO WHERE Id=" + position);
-        cursor.moveToPosition(position);
+        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM MOMENTO WHERE Id="+position);
 
-        //aca es donde obtiene la imagen. capaz hay que adaptarlo o ponerlo de otra forma
-        imgFragment.setImageBitmap(getImageFromBLOB(cursor.getBlob(cursor.getColumnIndex("image"))));
-        ;
+        while (cursor.moveToNext()) {
 
-        //codigo para insertar en sd
-        //...
+            //aca es donde obtiene la imagen. capaz hay que adaptarlo o ponerlo de otra forma
 
+            byte[] imagen = cursor.getBlob(2);
+
+            imgFragment = convertCompressedByteArrayToBitmap(imagen);
+
+
+            //codigo para insertar en sd
+            //...
+            String root = Environment.getExternalStorageDirectory().toString();
+            File myDir = new File(root + "/savedImages");
+
+            if (myDir.exists ()) myDir.delete ();
+            try {
+                myDir.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+//            if (!myDir.exists()) {
+//                myDir.mkdirs();
+//            }
+
+            Random generator = new Random();
+            int n = 10000;
+            n = generator.nextInt(n);
+            String fname = "Image-" + n + ".jpg";
+            File file = new File(myDir, fname);
+            if (file.exists())
+                file.delete();
+            try {
+                FileOutputStream out = new FileOutputStream(file);
+                imgFragment.compress(Bitmap.CompressFormat.JPEG, 90, out);
+                out.flush();
+                out.close();
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
 
     }
 

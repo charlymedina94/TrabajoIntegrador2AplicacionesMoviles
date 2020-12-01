@@ -423,7 +423,7 @@ public class MomentoList extends AppCompatActivity {
             //codigo para insertar en sd
             //...
             String root = Environment.getExternalStorageDirectory().toString();
-            File myDir = new File(root + "/saved_images");
+            File myDir = new File(root + "/savedImages");
 
             if (myDir.exists ()) myDir.delete ();
             myDir.createNewFile();
